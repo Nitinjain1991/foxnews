@@ -1,15 +1,71 @@
 <?php
-
+//delegates count
 // API endpoint URL
-$url = 'https://api.ap.org/v3/elections/';
+$url_delegates = 'https://api.ap.org/v3/elections/delegates/2024?format=json';
 
 // API key
 $api_key = 'KLOLDjf5m2DcoiHVs6mijZkSz38dMQpA';
 
+// Initialize cURL session for delegates endpoint
+$ch_delegates = curl_init();
+// Set the URL for delegates endpoint
+curl_setopt($ch_delegates, CURLOPT_URL, $url_delegates);
+
+// Set method to GET for delegates endpoint
+curl_setopt($ch_delegates, CURLOPT_HTTPGET, true);
+
+// Set headers for delegates endpoint
+$headers = array(
+    'x-api-key: ' . $api_key,
+    'Accept: application/json',
+    'Accept-Encoding: gzip'
+);
+curl_setopt($ch_delegates, CURLOPT_HTTPHEADER, $headers);
+
+// Return the response as a string instead of outputting it directly for delegates endpoint
+curl_setopt($ch_delegates, CURLOPT_RETURNTRANSFER, true);
+
+// Enable decompression of gzip-encoded responses for delegates endpoint
+curl_setopt($ch_delegates, CURLOPT_ENCODING, 'gzip');
+
+// Execute the cURL session for delegates endpoint
+$response_delegates = curl_exec($ch_delegates);
+
+// Check for errors for delegates endpoint
+if (curl_errno($ch_delegates)) {
+    echo 'Curl error (Delegates): ' . curl_error($ch_delegates);
+}
+
+// Close cURL session for delegates endpoint
+curl_close($ch_delegates);
+
+// Decode JSON response for delegates endpoint
+$data_delegates = json_decode($response_delegates, true);
+
+// Encode the data as JSON for delegates endpoint
+$json_data_delegates = json_encode($data_delegates);
+
+// Decode JSON data into associative array for delegates endpoint
+$data_delegates = json_decode($json_data_delegates, true);
+
+
+$candi_data_delegates = ($data_delegates['delSum'][0]['del'][0]['Cand']);
+// $electionDate = $elections[0]['electionDate'];
+////////////////////
+// API endpoint URL
+$url = 'https://api.ap.org/v3/elections/2024-02-08'; //for all elction dates
+
+$url_del = 'https://api.ap.org/v3/elections/delegates/2024?format=json';
+
+// API key
+// $api_key = 'MVuVRXajdj6qGT4BDCHcL1ogD5H3jqvE';
+$api_key = 'KLOLDjf5m2DcoiHVs6mijZkSz38dMQpA';
+
+
 // Initialize cURL session
 $ch = curl_init();
 
-// Set the URL 
+// Set the URL
 curl_setopt($ch, CURLOPT_URL, $url);
 
 // Set method to GET
@@ -68,7 +124,7 @@ $currYear = date("Y");
 // echo "First Name: " . $first_name . "<br>";
 // echo "Last Name: " . $last_name . "<br>";
 // Print the response
-// echo $json_data;
+echo $data_delegates;
 ?>
 
 <!doctype html>
@@ -85,7 +141,7 @@ $currYear = date("Y");
 
 <body>
 
-
+    <h2><?php print_r($candi_data_delegates) ?></h2>
     <div class="custom-container">
 
         <div class="d-flex justify-content-center align-items-center gap-3 data-jhdsfj ">
