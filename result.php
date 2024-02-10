@@ -1,7 +1,7 @@
 <?php
 
 // API endpoint URL
-$url = 'https://api.ap.org/v3/elections/';
+$url = 'https://api.ap.org/v3/elections/2024-02-24';
 
 // API key
 $api_key = 'KLOLDjf5m2DcoiHVs6mijZkSz38dMQpA';
@@ -43,26 +43,22 @@ curl_close($ch);
 // Decode JSON response
 $data = json_decode($response, true);
 
-// Encode the data as JSON      
+// Encode the data as JSON
 $json_data = json_encode($data);
 
 // var_dump($json_data);// Decode JSON data into associative array
 $data = json_decode($json_data, true);
 
 // Accessing and echoing the "first" and "last" names of the first candidate
-// $races = ($data['races']);
-$elections = ($data['elections']);
-// foreach ($elections as $ele) {
-//     // var_dump ($ele);
-//     $date =  $ele['electionDate'] . '<br/>';
-//     if (strpos($date, '2024') !== false) {
-//         echo $date . '<br/>';
-//     }
+$races = ($data['races']);
+// var_dump($races);
+// foreach($races as $a){
+//     // var_dump($a);
+//     echo $a['eventID']['electionDate'];
 // }
-$electionDate = $elections[0]['electionDate'];
 // $first_name = $races[0]['reportingUnits'][0]['candidates'][0]['first'];
 // $last_name = $races[0]['reportingUnits'][0]['candidates'][0]['last'];
-// $resultsType = $races[0]['resultsType'];
+$resultsType = $races[0]['resultsType'];
 $currYear = date("Y");
 
 // echo "First Name: " . $first_name . "<br>";
@@ -220,18 +216,6 @@ $currYear = date("Y");
 
 
 
-    <!-- <h1 class=""><?php echo $first_name ?></h1>
-    <h1 class=""><?php echo $resultsType ?></h1> -->
-    <?php
-    foreach ($elections as $ele) {
-        // var_dump ($ele);
-        $date =  $ele['electionDate'] . '<br/>';
-        if (strpos($date, '2024') !== false) { ?>
-            <h1><?php
-                echo $date ?></h1>
-    <?php
-        }
-    } ?></h1>
     <script src="assets/js/Bootstrap.js"></script>
 </body>
 

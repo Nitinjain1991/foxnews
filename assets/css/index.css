@@ -26,6 +26,19 @@
   height: 7px;
   display: inline-block;
   border-radius: 50%;
+
+  animation: live_pill_pulse 2s infinite ease-in-out;
+}
+@keyframes live_pill_pulse {
+  0%{
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100%{
+    opacity: 1;
+  }
 }
 .data-jhdsfj p {
   font-size: 12px;
@@ -103,7 +116,7 @@
   border-right: 7px solid transparent;
   border-top: 6px solid black;
 }
-.votes-to-win{
+.votes-to-win {
   position: absolute;
   top: -28px;
   width: 100%;
