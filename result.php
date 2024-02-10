@@ -9,7 +9,7 @@ $api_key = 'KLOLDjf5m2DcoiHVs6mijZkSz38dMQpA';
 // Initialize cURL session
 $ch = curl_init();
 
-// Set the URL
+// Set the URL 
 curl_setopt($ch, CURLOPT_URL, $url);
 
 // Set method to GET
