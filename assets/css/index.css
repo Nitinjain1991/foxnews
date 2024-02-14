@@ -27,14 +27,14 @@
   display: inline-block;
   border-radius: 50%;
 
-  animation: fading 3s ease-in-out infinite;
+  animation: fading 2s infinite ease-in-out;
 }
 @keyframes fading {
   0% {
     opacity: 1;
   }
   50% {
-    opacity: 0;
+    opacity: 0.5;
   }
   100% {
     opacity: 1;
@@ -97,30 +97,31 @@
 .progress-bar {
   background-color: #1b4e81;
 }
-.summary-candidate__bar::before {
+.summary-candidate__bar::before,
+.votes-to-win::before {
   content: "";
   position: absolute;
   top: 30px;
-  left: 50%;
+  left: 25px;
   height: 14px;
   border-left: 1px dashed #222;
 }
-.summary-candidate__bar::after {
+.votes-to-win::after {
   content: "";
   position: absolute;
   top: 18px;
-  left: calc(50% - 7px);
+  left: 18px;
   width: 0;
   height: 0;
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-top: 6px solid black;
 }
+.summary-candidate__bar,
 .votes-to-win {
   position: absolute;
   top: -28px;
-  width: 100%;
-  text-align: center;
+  left: 50%;
   font-size: 11px;
 }
 @media (min-width: 768px) {

@@ -45,7 +45,7 @@ $currYear = date("Y");
 // end election status
 
 // 2nd API
-$url_del = 'https://api.ap.org/v3/elections/delegates/2024?format=json';
+$url_del = 'https://api.ap.org/v3/elections/';
 $api_key_del = 'KLOLDjf5m2DcoiHVs6mijZkSz38dMQpA';
 $ch_del = curl_init();
 curl_setopt($ch_del, CURLOPT_URL, $url_del);
@@ -67,27 +67,8 @@ $data_del = json_decode($response_del, true);
 $json_data_del = json_encode($data_del);
 $can_del = $data_del['delSum']['del'];
 
+print_r($json_data_del);
 
-// // Loop through each party's data
-// foreach ($can_del as $party) {
-//     // Extract party ID
-//     $party_id = $party['pId'];
-
-//     // Print party ID
-//     echo "Party: $party_id\n";
-
-//     // Loop through candidates in the party
-//     foreach ($party['Cand'] as $candidate) {
-//         // Extract candidate name and ID
-//         $candidate_name = $candidate['cName'];
-//         $candidate_id = $candidate['cId'];
-
-//         // Print candidate details for the first two candidates in each party
-//         if ($candidate_id === '1036' || $candidate_id === '160566' || $candidate_id === '8639' || $candidate_id === '60420') {
-//             echo "Candidate ID: $candidate_id, Name: $candidate_name\n";
-//         }
-//     }
-// }
 // Loop through each party's data
 foreach ($can_del as $party) {
     // Extract party ID
@@ -95,10 +76,10 @@ foreach ($can_del as $party) {
 
     // Print party ID
     // echo "</br> Party: $party_id\n";
-
+    // $dneed = $party['dNeed'];
     // Loop counter
     $counter = 0;
-
+    // echo $dneed;
     // Loop through candidates in the party
     foreach ($party['Cand'] as $candidate) {
         // Increment the counter
@@ -167,6 +148,7 @@ foreach ($can_del as $party) {
                 $party_clr = ($party_id == "GOP") ? "color: #c20017 !important;" : "";
                 // Print party ID
                 // echo "</br> Party: $party_id\n";
+                // $dneed = $party['dNeed'];
 
                 // Loop counter
                 $counter = 0;
@@ -220,23 +202,17 @@ foreach ($can_del as $party) {
                 // Extract party ID
                 $party_id = $party['pId'];
                 // Determine the background color based on party ID
-                $background_style = ($party_id == "GOP") ? "background: #c20017 !important;" : "";
+                $background_style = ($party_id == "GOP") ? "background: #c20017 !important;" : "background: #1b4e81 !important;";
                 $party_clr = ($party_id == "GOP") ? "color: #c20017 !important;" : "";
 
-                $del_counts = ($party_id == "Dem") ?
-                    '<div class="d-flex justify-content-between align-items-center">
-                        <h4 class="summary__title fw-extrabold">' . "</br> Party: $party_id\n" . '</h4>
+                //     $del_counts = '<div class="d-flex justify-content-between align-items-center">
+                //     <h4 class="summary__title fw-extrabold">' . "</br> Party: $party_id\n" . '</h4>
 
-                        <div class="summary_delegates_remaining text-white fw-extrabold" style="' . $background_style . '">3,843
-                            Delegates Left</div>
-                    </div>' :
-                    '<div class="d-flex justify-content-between align-items-center">
-                        <h4 class="summary__title fw-extrabold">' . "</br> Party: $party_id\n" . '</h4>
-
-                        <div class="summary_delegates_remaining text-white fw-extrabold" style="' . $background_style . '">3,845
-                            Delegates Left</div>
-                    </div>';
-
+                //     <div class="summary_delegates_remaining text-white fw-extrabold" style="' . $background_style . '">
+                //         ' . ($party_id == "Dem" ? "$dneed (Dem) " : "") . ($party_id == "GOP" ? "$dneed (Gop) " : "") . '
+                //         Delegates Left
+                //     </div>
+                // </div>';
                 // Print party ID
                 // echo "</br> Party: $party_id\n";
                 // Loop counter
@@ -249,6 +225,18 @@ foreach ($can_del as $party) {
                     // Print candidate details for the first two candidates in each party
                     $candidate_del = $candidate['dTot'];
                     $candidate_name = $candidate['cName'];
+                    $dToBeChosen = $party['dToBeChosen'];
+                    $dNeed = $party['dNeed'];
+                    $dVotes = $party['dVotes'];
+
+                    $del_counts = '<div class="d-flex justify-content-between align-items-center">
+                <h4 class="summary__title fw-extrabold">' . "</br> Party: $party_id\n" . '</h4>
+            
+                <div class="summary_delegates_remaining text-white fw-extrabold" style="' . $background_style . '">
+                    ' . ($party_id == "Dem" ? number_format($dToBeChosen) : "") . ($party_id == "GOP" ? number_format($dToBeChosen) : "") . '
+                    Delegates Left
+                </div>
+            </div>';
                     // echo $counter . "</br>";
                     if ($party_id == 'Dem') {
                         $cdel[] = $candidate_del;
@@ -273,11 +261,42 @@ foreach ($can_del as $party) {
                                                 </div>
 
                                                 <div class="position-relative">
-                                                    <div class="votes-to-win summary-candidate__bar">
-                                                        1968 to win
+                                                    <!-- <?php
+                                                            if ($candidate_del == $cdel[0]) {
+                                                            ?>
+                                                        <div class="votes-to-win">
+                                                            1968 to win
+                                                        </div>
+                                                    <?php
+                                                            }
+                                                    ?> -->
+
+                                                    <div class="<?php
+                                                                if ($candidate_del == $cdel[0]) {
+                                                                ?>votes-to-win<?php
+                                                                            } else {
+                                                                                ?>
+                                                                                summary-candidate__bar
+                                                                                <?php
+                                                                            }
+                                                                                ?>">
+                                                        <?php
+                                                        if ($candidate_del == $cdel[0]) echo $dNeed . " to win"
+                                                        ?>
                                                     </div>
+
                                                     <div class="progress">
-                                                        <div class="progress-bar w-25" style="<?php echo $background_style; ?>" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <?php
+                                                        $value = $candidate_del;
+                                                        $maxValue = $dVotes;
+                                                        // echo $value;
+                                                        // echo $maxValue;
+                                                        $percentage = ($value / $maxValue) * 100;
+
+                                                        $cand_del_bar = 'width: ' . $percentage . '% !important;';
+                                                        ?>
+
+                                                        <div class="progress-bar" style="<?php echo $cand_del_bar . $background_style; ?>" role="progressbar" aria-valuenow="<?php echo $value; ?>" aria-valuemin="100" aria-valuemax="<?php echo $maxValue; ?>"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -285,15 +304,18 @@ foreach ($can_del as $party) {
                                     </div>
                                 <?php
                                 } ?>
-                            </div><?php
-                                }
-                            } else {
-                                $gdel[] = $candidate_del;
-                                rsort($gdel);
-                                if (($candidate_del == $gdel[0]) || ($candidate_del == $gdel[1])) {
-                                    //echo $candidate_name;
-                                    ?>
-                            <div class="col-12">
+                            </div>
+                        <?php
+                        }
+                    } else {
+                        $gdel[] = $candidate_del;
+                        rsort($gdel);
+                        if (($candidate_del == $gdel[0]) || ($candidate_del == $gdel[1])) {
+                            //echo $candidate_name;
+                        ?>
+                            <div class="col-6">
+                                <?php echo $del_counts ?>
+
                                 <div class="d-flex justify-content-between align-items-center gap-2 mt-2">
                                     <img src="assets/images/joe-biden.png" alt="joe-biden" class="w-100 h-100 object-fit-contain summary-candidate__image">
 
@@ -305,28 +327,59 @@ foreach ($can_del as $party) {
                                         </div>
 
                                         <div class="position-relative">
-                                            <div class="votes-to-win summary-candidate__bar">
-                                                1968 to win
+                                            <!-- <?php
+                                                    if ($candidate_del == $cdel[0]) {
+                                                    ?>
+                                                        <div class="votes-to-win">
+                                                            1968 to win
+                                                        </div>
+                                                    <?php
+                                                    }
+                                                    ?> -->
+
+                                            <div class="<?php
+                                                        if ($candidate_del == $gdel[0]) {
+                                                        ?>votes-to-win<?php
+                                                                    } else {
+                                                                        ?>
+                                                                                summary-candidate__bar
+                                                                                <?php
+                                                                            }
+                                                                                ?>">
+                                                <?php
+                                                if ($candidate_del == $gdel[0]) echo $dNeed . " to win"
+                                                ?>
                                             </div>
+
                                             <div class="progress">
-                                                <div class="progress-bar w-25" style="<?php echo $background_style; ?>" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <?php
+                                                $value = $candidate_del;
+                                                $maxValue = $dVotes;
+                                                // echo $value;
+                                                // echo $maxValue;
+                                                $percentage = ($value / $maxValue) * 100;
+
+                                                $cand_del_bar = 'width: ' . $percentage . '% !important;';
+                                                ?>
+
+                                                <div class="progress-bar" style="<?php echo $cand_del_bar . $background_style; ?>" role="progressbar" aria-valuenow="<?php echo $value; ?>" aria-valuemin="100" aria-valuemax="<?php echo $maxValue; ?>"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                     <?php
-                                }
-                            }
-                            // // echo $party_id;
-                            // var_dump($cdel);
-                            // foreach($cdel as $aa){
-                            //     // echo $aa.'<br/>';
-                            // }
-                            // if (
-                            //     $candidate_name === 'Phillips'
-                            //     || $counter == 2
-                            // ) {
+                        }
+                    }
+                    // // echo $party_id;
+                    // var_dump($cdel);
+                    // foreach($cdel as $aa){
+                    //     // echo $aa.'<br/>';
+                    // }
+                    // if (
+                    //     $candidate_name === 'Phillips'
+                    //     || $counter == 2
+                    // ) {
                     ?>
 
             <?php
