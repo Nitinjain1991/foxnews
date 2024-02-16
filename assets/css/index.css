@@ -124,6 +124,70 @@
   left: 50%;
   font-size: 11px;
 }
+
+/* right area  */
+.primaries-schedule {
+  padding: 24px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  border-color: #e8e8e8 !important;
+}
+.primary-schedule-title {
+  font-size: 24px;
+  line-height: 28px;
+  text-align: left;
+  color: #222;
+}
+.primary-schedule-description {
+  color: #666;
+  font-style: normal;
+  font-size: 14px;
+}
+.primaries-schedule-month__candidate {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  padding: 2px 3px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 100px;
+  font-weight: 900;
+  font-size: 12px;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+}
+.primaries-schedule-month__candidate--dem {
+  background: var(--political-parties-dem-win, #1b4e81);
+}
+.primaries-schedule-month__candidate--gop {
+  background: var(--political-parties-rep-win, #d20f26);
+}
+.takes-place {
+  color: #222;
+  font-size: 12px;
+  line-height: 18px;
+}
+.takes-place::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: var(--primary-yellow, #ffcc00);
+}
+.elections-2024 a {
+  color: var(--light-mode-sub-text, #999);
+  font-size: 12px;
+  line-height: normal;
+  font-style: normal;
+  font-weight: 500;
+}
+.elections-2024 a:hover .bb-highlight {
+  text-decoration: underline !important;
+}
 @media (min-width: 768px) {
   .custom-container .title {
     font-size: 48px;

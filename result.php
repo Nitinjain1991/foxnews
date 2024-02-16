@@ -45,7 +45,7 @@ $currYear = date("Y");
 // end election status
 
 // 2nd API
-$url_del = 'https://api.ap.org/v3/elections/';
+$url_del = 'https://api.ap.org/v3/elections/delegates/2024?format=json';
 $api_key_del = 'KLOLDjf5m2DcoiHVs6mijZkSz38dMQpA';
 $ch_del = curl_init();
 curl_setopt($ch_del, CURLOPT_URL, $url_del);
@@ -67,33 +67,33 @@ $data_del = json_decode($response_del, true);
 $json_data_del = json_encode($data_del);
 $can_del = $data_del['delSum']['del'];
 
-print_r($json_data_del);
+// print_r($json_data_del);
 
 // Loop through each party's data
-foreach ($can_del as $party) {
-    // Extract party ID
-    $party_id = $party['pId'];
+// foreach ($can_del as $party) {
+//     // Extract party ID
+//     $party_id = $party['pId'];
 
-    // Print party ID
-    // echo "</br> Party: $party_id\n";
-    // $dneed = $party['dNeed'];
-    // Loop counter
-    $counter = 0;
-    // echo $dneed;
-    // Loop through candidates in the party
-    foreach ($party['Cand'] as $candidate) {
-        // Increment the counter
-        $counter++;
+//     // Print party ID
+//     // echo "</br> Party: $party_id\n";
+//     // $dneed = $party['dNeed'];
+//     // Loop counter
+//     $counter = 0;
+//     // echo $dneed;
+//     // Loop through candidates in the party
+//     foreach ($party['Cand'] as $candidate) {
+//         // Increment the counter
+//         $counter++;
 
-        $candidate_name = $candidate['cName'];
-        $candidate_dTot = $candidate['dTot'];
+//         $candidate_name = $candidate['cName'];
+//         $candidate_dTot = $candidate['dTot'];
 
-        //   Print candidate details for the first two candidates in each party
-        if ($candidate_name === 'Phillips' || $candidate_name === 'Haley') {
-            echo "Candidate ID: $candidate_dTot, Name: $candidate_name\n";
-        }
-    }
-}
+//         //   Print candidate details for the first two candidates in each party
+//         if ($candidate_name === 'Phillips' || $candidate_name === 'Haley') {
+//             echo "Candidate ID: $candidate_dTot, Name: $candidate_name\n";
+//         }
+//     }
+// }
 // echo $json_data_del;
 
 
