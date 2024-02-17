@@ -188,6 +188,7 @@
 .elections-2024 a:hover .bb-highlight {
   text-decoration: underline !important;
 }
+
 @media (min-width: 768px) {
   .custom-container .title {
     font-size: 48px;

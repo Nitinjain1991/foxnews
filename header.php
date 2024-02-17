@@ -217,7 +217,7 @@ $json_data_sec = json_encode($data_sec);
     <link rel="stylesheet" href="assets/css/Bootstrap.css">
     <style>
         .custom-container {
-            / / max-width: 1640px; / /
+            /* max-width: 1640px;  */
             margin: 0px auto;
             padding-left: 48px;
             padding-right: 48px;
@@ -469,7 +469,7 @@ $json_data_sec = json_encode($data_sec);
                                 {
                                 ?>
                                     <p class="highlight-title m-0">up next</p>
-                                    <p class="party-next m-0"><?php echo  getStateAbbreviation($event['state']); ?><?php echo " " . $event['calendarEvent']; ?> </p>
+                                    <p class="party-next m-0"><?php echo  getStateAbbreviation($event['state']); ?><?php echo " " . $event['calendarEvent']; ?></p>
                                     <div class="next-event-date mt-1">
                                         <?php echo formatDate($event['eventDate']); ?>
                                     </div>
@@ -537,8 +537,8 @@ $json_data_sec = json_encode($data_sec);
                                         <h4 class="my-2 text-center"><?php echo $candidate['last'] ?></h4>
 
                                         <p class="mb-1 d-flex align-items-center justify-content-center gap-1">
-                                        <?php if (isset($candidate['winner']) && $candidate['winner'] == "X") { ?>
-                                            <img src="assets/images/right-marks.png" alt="right-marks" width="20px" class="object-fit-contain highlight-result">
+                                            <?php if (isset($candidate['winner']) && $candidate['winner'] == "X") { ?>
+                                                <img src="assets/images/right-marks.png" alt="right-marks" width="20px" class="object-fit-contain highlight-result">
                                             <?php } ?>
                                             <?php echo $rounded_percentage . "%" ?>
                                         </p>
@@ -559,7 +559,11 @@ $json_data_sec = json_encode($data_sec);
                             <div class="national-leader">
                                 <p class="mb-1 d-flex align-items-center justify-content-center gap-1 highlight-result text-uppercase fw-bold"><?php echo $data_sec['delSum']['del'][0]['dNeed']; ?> needed to win</p>
                                 <h4 class="mb-1">national leaders</h4>
-                                <h5 class="mb-1">Republican president</h5>
+                                <h5 class="mb-1"><?php $pId = $data_sec['delSum']['del'][0]['pId'];
+                                                    if ($pId == "GOP") {
+                                                        echo "REPUBLICAN";
+                                                    }
+                                                    ?> president</h5>
                                 <a href="" class="more-flex-things">full breakdown &rarr;</a>
                             </div>
                         </div>

@@ -235,83 +235,188 @@ $elections_data = ($data_date['elections']);
                             Taking place today
                         </div>
                         <?php
-$api_url = 'https://api.ap.org/v3/reports/Calendar-Elections2024-Live';
-$api_key = 'KLOLDjf5m2DcoiHVs6mijZkSz38dMQpA';
+                        $api_url = 'https://api.ap.org/v3/reports/Calendar-Elections2024-Live';
+                        $api_key = 'KLOLDjf5m2DcoiHVs6mijZkSz38dMQpA';
 
-// Make the API request
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $api_url);
-curl_setopt($ch, CURLOPT_HTTPGET, true);
-$headers = array(
-    'x-api-key: ' . $api_key,
-    'Accept: application/json',
-    'Accept-Encoding: gzip'
-);
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
-$response = curl_exec($ch);
-if (curl_errno($ch)) {
-    echo 'Curl error: ' . curl_error($ch);
-}
-curl_close($ch);
+                        // Make the API request
+                        $ch = curl_init();
+                        curl_setopt($ch, CURLOPT_URL, $api_url);
+                        curl_setopt($ch, CURLOPT_HTTPGET, true);
+                        $headers = array(
+                            'x-api-key: ' . $api_key,
+                            'Accept: application/json',
+                            'Accept-Encoding: gzip'
+                        );
+                        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                        curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
+                        $response = curl_exec($ch);
+                        if (curl_errno($ch)) {
+                            echo 'Curl error: ' . curl_error($ch);
+                        }
+                        curl_close($ch);
 
-$data = json_decode($response, true);
-$json_data = json_encode($data);
-// print_r($json_data) . "</br>";
-$ElectionCalendar2024 = ($data['ElectionCalendar2024']['EventInformation']);
+                        $data = json_decode($response, true);
+                        $json_data = json_encode($data);
+                        // print_r($json_data) . "</br>";
+                        $ElectionCalendar2024 = ($data['ElectionCalendar2024']['EventInformation']);
+                        $datesByMonth = array();
 
-$current_month = '';
-foreach ($ElectionCalendar2024 as $var_data) {
-    $date = $var_data['eventDate'];
-    $dateObject = DateTime::createFromFormat('Y-m-d', $date);
-    $elc_date = $dateObject->format('F d');
-    $elc_month = $dateObject->format('F');
+                        foreach ($data['ElectionCalendar2024']['EventInformation'] as $var_data) {
+                            $eventDate = strtotime($var_data['eventDate']);
+                            $month = date('n', $eventDate); // Get the month without leading zeros
 
-    if ($current_month != $elc_month) {
-        echo "<h3>" . $elc_month . "</h3>";
-        $current_month = $elc_month;
-    }
-    ?>
-    <div class="elections-2024 mb-2">
+                            if (!isset($datesByMonth[$month])) {
+                                $datesByMonth[$month] = array();
+                            }
 
-        <a href="" class=" text-decoration-none d-flex justify-content-between align-items-center">
-            <div class="d-inline-block">
-                <span>
-                    <?php echo $elc_date; ?>
-                </span>
-                <span class="ms-4 bb-highlight">
-                    <?php echo $var_data['state']; ?>
-                </span>
-            </div>
+                            $datesByMonth[$month][] = date('Y-m-d', $eventDate);
+                        }
 
-            <div class="d-flex gap-1">
-                <?php
-                if (array_key_exists('presPrimary', $var_data)) {
-                    if (strpos($var_data['presPrimary'], 'Dem') !== false) {
-                ?>
-                        <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--dem">d</div>
-                    <?php
-                    }
-                    if (strpos($var_data['presPrimary'], 'GOP') !== false) {
-                    ?>
-                        <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--gop">r</div>
-                <?php
-                    }
-                }
-                echo '<br/>';
-                ?>
-            </div>
-        </a>
-    </div>
-<?php
-}
-?>
+
+                        // // Group events by month
+                        // $eventsByMonth = [];
+                        // foreach ($data['ElectionCalendar2024']['EventInformation'] as $event) {
+                        //     $dateParts = explode('-', $event['eventDate']);
+                        //     $month = intval($dateParts[1]);
+                        //     $eventsByMonth[$month][] = ['eventDate' => $event['eventDate'], 'state' => $event['state']];
+                        // }
+
+                        // // Print events by month
+                        // foreach ($eventsByMonth as $month => $events) {
+                        //     echo "Month $month";
+                        //     echo '<br/>';
+                        //     foreach ($events as $event) {
+                        //         echo "- {$event['eventDate']} - {$event['state']} - {$event['presPrimary']}";
+                        //         echo '<br/>';
+
+                        //     }
+                        // }
+
+                        // Group events by month
+                        $eventsByMonth = [];
+                        foreach ($data['ElectionCalendar2024']['EventInformation'] as $event) {
+                            $dateParts = explode('-', $event['eventDate']);
+                            $month = intval($dateParts[1]);
+                            $presPrimary = isset($event['presPrimary']) ? $event['presPrimary'] : '';
+                            $eventsByMonth[$month][] = ['eventDate' => $event['eventDate'], 'state' => $event['state'], 'presPrimary' => $presPrimary];
+                        }
+
+                        // Print events by month
+                        foreach ($eventsByMonth as $month => $events) {
+                            $dateObj   = DateTime::createFromFormat('!m', $month);
+                            $monthName = $dateObj->format('F');
+                            // echo "<h3> $monthName </h3>";
+                            foreach ($events as $event) {
+                                $edate = "{$event['eventDate']}";
+                                $estate = "{$event['state']}";
+                                $eparty = "{$event['presPrimary']}";
+                                $dateObject = DateTime::createFromFormat('Y-m-d', $edate);
+                                $elc_date = $dateObject->format('D, M d');
+
+                                // if(($eparty == 'Dem')||($eparty == 'Dem, GOP')){
+
+                        ?>
+                                <div class="elections-2024 mb-2">
+
+                                    <a href="" class=" text-decoration-none d-flex justify-content-between align-items-center">
+                                        <div class="d-inline-block">
+                                            <span>
+                                                <?php
+                                                if ($eparty == 'Dem') {
+                                                    echo $elc_date;
+                                                } elseif ($eparty == 'GOP') {
+                                                    echo $elc_date;
+                                                } elseif ($eparty == 'Dem, GOP') {
+                                                    echo $elc_date;
+                                                }
+                                                ?>
+                                            </span>
+                                            <span class="ms-4 bb-highlight">
+                                                <?php
+                                                if ($eparty == 'Dem') {
+                                                    echo $estate;
+                                                } elseif ($eparty == 'GOP') {
+                                                    echo $estate;
+                                                } elseif ($eparty == 'Dem, GOP') {
+                                                    echo $estate;
+                                                }
+                                                ?>
+                                            </span>
+                                        </div>
+
+                                        <div class="d-flex gap-1">
+                                            <?php
+                                            if ($eparty == 'GOP') {
+                                            ?>
+                                                <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--gop">r</div> <?php
+                                                                                                                                                } elseif ($eparty == 'Dem, GOP') { ?>
+                                                <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--dem">d</div>
+                                                <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--gop">r</div> <?php
+                                                                                                                                                } ?>
+                                        </div>
+                                    </a>
+                                </div>
+                        <?php }
+                            // }
+                        }
+
+                        // Iterate through the election dates in the $elections_data array
+                        // foreach ($elections_data as $ele) {
+                        //     $date =  $ele['electionDate'] . '<br/>';
+                        //     if (stripos($date, '2024') !== false) { 
+                        ?>
+                        <!--  <h1><?php echo $date ?></h1> -->
+                        <?php
+                        foreach ($ElectionCalendar2024 as $var_data) {
+                            $date = $var_data['eventDate'];
+                            $dateObject = DateTime::createFromFormat('Y-m-d', $date);
+                            $elc_date = $dateObject->format('D, M d');
+                        ?>
+                            <!-- <div class="elections-2024 mb-2">
+
+                                <a href="" class=" text-decoration-none d-flex justify-content-between align-items-center">
+                                    <div class="d-inline-block">
+                                        <span>
+                                            <?php echo $date; ?>
+                                        </span>
+                                        <span class="ms-4 bb-highlight">
+                                            <?php echo $var_data['state']; ?>
+                                        </span>
+                                    </div>
+
+                                    <div class="d-flex gap-1">
+                                        <?php
+                                        if (array_key_exists('presPrimary', $var_data)) {
+                                            if (strpos($var_data['presPrimary'], 'Dem') !== false) {
+                                        ?>
+                                                <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--dem">d</div>
+                                            <?php
+                                            }
+                                            if (strpos($var_data['presPrimary'], 'GOP') !== false) {
+                                            ?>
+                                                <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--gop">r</div>
+                                        <?php
+                                            }
+                                        }
+                                        echo '<br/>';
+                                        ?>
+                                    </div>
+                                </a>
+                            </div> -->
+
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <?php
+
+    print_r($json_data) . "</br>";
+    ?>
     <!-- 2024 Primary Schedule  -->
 
 
