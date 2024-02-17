@@ -301,12 +301,15 @@ $elections_data = ($data_date['elections']);
                             $presPrimary = isset($event['presPrimary']) ? $event['presPrimary'] : '';
                             $eventsByMonth[$month][] = ['eventDate' => $event['eventDate'], 'state' => $event['state'], 'presPrimary' => $presPrimary];
                         }
+                        $prevMonth = '';
 
                         // Print events by month
                         foreach ($eventsByMonth as $month => $events) {
                             $dateObj   = DateTime::createFromFormat('!m', $month);
                             $monthName = $dateObj->format('F');
-                            // echo "<h3> $monthName </h3>";
+                            echo "<h3>$monthName</h3>";
+                            $currYear = date("Y");
+                            // Print month only if it hasn't been printed before
                             foreach ($events as $event) {
                                 $edate = "{$event['eventDate']}";
                                 $estate = "{$event['state']}";
@@ -314,99 +317,103 @@ $elections_data = ($data_date['elections']);
                                 $dateObject = DateTime::createFromFormat('Y-m-d', $edate);
                                 $elc_date = $dateObject->format('D, M d');
 
-                                // if(($eparty == 'Dem')||($eparty == 'Dem, GOP')){
+                                if (($eparty == 'Dem') || ($eparty == 'GOP')) { ?>
+                                    <div class="elections-2024 mb-2">
 
-                        ?>
-                                <div class="elections-2024 mb-2">
+                                        <a href="" class=" text-decoration-none d-flex justify-content-between align-items-center">
+                                            <div class="d-inline-block">
+                                                <span>
+                                                    <?php
+                                                    // if ($eparty == 'Dem') {
+                                                    //     echo $elc_date;
+                                                    // } elseif ($eparty == 'GOP') {
+                                                    //     echo $elc_date;
+                                                    // } elseif ($eparty == 'Dem, GOP') {
+                                                    // }
+                                                    echo $elc_date;
+                                                    ?>
+                                                </span>
+                                                <span class="ms-4 bb-highlight">
+                                                    <?php
+                                                    // if ($eparty == 'Dem') {
+                                                    //     echo $estate;
+                                                    // } elseif ($eparty == 'GOP') {
+                                                    //     echo $estate;
+                                                    // } elseif ($eparty == 'Dem, GOP') {
+                                                    // }
+                                                    echo $estate;
+                                                    ?>
+                                                </span>
+                                            </div>
 
-                                    <a href="" class=" text-decoration-none d-flex justify-content-between align-items-center">
-                                        <div class="d-inline-block">
-                                            <span>
+                                            <div class="d-flex gap-1">
                                                 <?php
-                                                if ($eparty == 'Dem') {
-                                                    echo $elc_date;
-                                                } elseif ($eparty == 'GOP') {
-                                                    echo $elc_date;
-                                                } elseif ($eparty == 'Dem, GOP') {
-                                                    echo $elc_date;
-                                                }
+                                                if ($eparty == 'GOP') {
                                                 ?>
-                                            </span>
-                                            <span class="ms-4 bb-highlight">
+                                                    <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--gop">r</div>
                                                 <?php
-                                                if ($eparty == 'Dem') {
-                                                    echo $estate;
-                                                } elseif ($eparty == 'GOP') {
-                                                    echo $estate;
-                                                } elseif ($eparty == 'Dem, GOP') {
-                                                    echo $estate;
-                                                }
+                                                } elseif ($eparty == 'Dem') {
                                                 ?>
-                                            </span>
-                                        </div>
+                                                    <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--dem">d</div>
+                                                <?php
+                                                } elseif ($eparty == 'Dem, GOP') { ?>
+                                                    <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--dem">d</div>
+                                                    <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--gop">r</div>
+                                                <?php
+                                                } ?>
+                                            </div>
+                                        </a>
+                                    </div>
+                                <?php } elseif ($eparty == 'Dem, GOP') { ?>
+                                    <div class="elections-2024 mb-2">
+                                        <a href="" class=" text-decoration-none d-flex justify-content-between align-items-center">
+                                            <div class="d-inline-block">
+                                                <span>
+                                                    <?php
+                                                    // if ($eparty == 'Dem') {
+                                                    //     echo $elc_date;
+                                                    // } elseif ($eparty == 'GOP') {
+                                                    //     echo $elc_date;
+                                                    // } elseif ($eparty == 'Dem, GOP') {
+                                                    // }
+                                                    echo $elc_date;
+                                                    ?>
+                                                </span>
+                                                <span class="ms-4 bb-highlight">
+                                                    <?php
+                                                    // if ($eparty == 'Dem') {
+                                                    //     echo $estate;
+                                                    // } elseif ($eparty == 'GOP') {
+                                                    //     echo $estate;
+                                                    // } elseif ($eparty == 'Dem, GOP') {
+                                                    // }
+                                                    echo $estate;
+                                                    ?>
+                                                </span>
+                                            </div>
 
-                                        <div class="d-flex gap-1">
-                                            <?php
-                                            if ($eparty == 'GOP') {
-                                            ?>
-                                                <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--gop">r</div> <?php
-                                                                                                                                                } elseif ($eparty == 'Dem, GOP') { ?>
-                                                <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--dem">d</div>
-                                                <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--gop">r</div> <?php
-                                                                                                                                                } ?>
-                                        </div>
-                                    </a>
-                                </div>
+                                            <div class="d-flex gap-1">
+                                                <?php
+                                                if ($eparty == 'GOP') {
+                                                ?>
+                                                    <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--gop">r</div>
+                                                <?php
+                                                } elseif ($eparty == 'Dem') {
+                                                ?>
+                                                    <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--dem">d</div>
+                                                <?php
+                                                } elseif ($eparty == 'Dem, GOP') { ?>
+                                                    <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--dem">d</div>
+                                                    <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--gop">r</div>
+                                                <?php
+                                                } ?>
+                                            </div>
+                                        </a>
+                                    </div>
                         <?php }
-                            // }
+                            }
                         }
 
-                        // Iterate through the election dates in the $elections_data array
-                        // foreach ($elections_data as $ele) {
-                        //     $date =  $ele['electionDate'] . '<br/>';
-                        //     if (stripos($date, '2024') !== false) { 
-                        ?>
-                        <!--  <h1><?php echo $date ?></h1> -->
-                        <?php
-                        foreach ($ElectionCalendar2024 as $var_data) {
-                            $date = $var_data['eventDate'];
-                            $dateObject = DateTime::createFromFormat('Y-m-d', $date);
-                            $elc_date = $dateObject->format('D, M d');
-                        ?>
-                            <!-- <div class="elections-2024 mb-2">
-
-                                <a href="" class=" text-decoration-none d-flex justify-content-between align-items-center">
-                                    <div class="d-inline-block">
-                                        <span>
-                                            <?php echo $date; ?>
-                                        </span>
-                                        <span class="ms-4 bb-highlight">
-                                            <?php echo $var_data['state']; ?>
-                                        </span>
-                                    </div>
-
-                                    <div class="d-flex gap-1">
-                                        <?php
-                                        if (array_key_exists('presPrimary', $var_data)) {
-                                            if (strpos($var_data['presPrimary'], 'Dem') !== false) {
-                                        ?>
-                                                <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--dem">d</div>
-                                            <?php
-                                            }
-                                            if (strpos($var_data['presPrimary'], 'GOP') !== false) {
-                                            ?>
-                                                <div class="primaries-schedule-month__candidate primaries-schedule-month__candidate--gop">r</div>
-                                        <?php
-                                            }
-                                        }
-                                        echo '<br/>';
-                                        ?>
-                                    </div>
-                                </a>
-                            </div> -->
-
-                        <?php
-                        }
                         ?>
                     </div>
                 </div>
@@ -415,11 +422,20 @@ $elections_data = ($data_date['elections']);
     </section>
     <?php
 
-    print_r($json_data) . "</br>";
     ?>
     <!-- 2024 Primary Schedule  -->
 
-
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var headings = document.querySelectorAll("h3");
+            headings.forEach(function(heading) {
+                var nextElement = heading.nextElementSibling;
+                if (!(nextElement && nextElement.classList.contains("elections-2024"))) {
+                    heading.style.display = "none";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

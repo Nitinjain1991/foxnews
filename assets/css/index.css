@@ -117,11 +117,19 @@
   border-right: 7px solid transparent;
   border-top: 6px solid black;
 }
-.votes-to-win{
+.summary-candidate__bar,
+.votes-to-win {
   position: absolute;
   top: -28px;
   left: 50%;
   font-size: 11px;
+}
+.month-head {
+  font-size: 16px;
+  font-weight: 900;
+  line-height: normal;
+  font-style: normal;
+  color: #222222af;
 }
 
 /* right area  */
