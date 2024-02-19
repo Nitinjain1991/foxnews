@@ -1,11 +1,7 @@
 <?php
 // API endpoint URL
-<<<<<<< HEAD
 $url = 'https://api.ap.org/v3/elections/2024-02-24';
 
-=======
-$url = 'https://api.ap.org/v3/elections/2024-02-08'; //for all elction dates
->>>>>>> b55de1ba0d2fd4a2ed4fa2c84b4ecb85781b84ec
 // API key
 // $api_key = 'MVuVRXajdj6qGT4BDCHcL1ogD5H3jqvE';
 $api_key = 'KLOLDjf5m2DcoiHVs6mijZkSz38dMQpA';
@@ -26,11 +22,8 @@ if (curl_errno($ch)) {
 }
 curl_close($ch);
 $data = json_decode($response, true);
-<<<<<<< HEAD
 
 // Encode the data as JSON
-=======
->>>>>>> b55de1ba0d2fd4a2ed4fa2c84b4ecb85781b84ec
 $json_data = json_encode($data);
 $data = json_decode($json_data, true);
 $races = ($data['races']);
@@ -46,7 +39,6 @@ $lastUpdated = ($data['races'][0]['reportingUnits'][0]['lastUpdated']);
 $formattedDateTime = convertDateTime($lastUpdated);
 // echo $formattedDateTime . "</br>";
 
-<<<<<<< HEAD
 // Accessing and echoing the "first" and "last" names of the first candidate
 $races = ($data['races']);
 // var_dump($races);
@@ -54,8 +46,6 @@ $races = ($data['races']);
 //     // var_dump($a);
 //     echo $a['eventID']['electionDate'];
 // }
-=======
->>>>>>> b55de1ba0d2fd4a2ed4fa2c84b4ecb85781b84ec
 // $first_name = $races[0]['reportingUnits'][0]['candidates'][0]['first'];
 // $last_name = $races[0]['reportingUnits'][0]['candidates'][0]['last'];
 $resultsType = $races[0]['resultsType'];
@@ -412,12 +402,6 @@ $can_del = $data_del['delSum']['del'];
 
 
 
-<<<<<<< HEAD
-=======
-    <!-- <h1 class=""><?php echo $first_name ?></h1>
-    <h1 class=""><?php echo $resultsType ?></h1> -->
-
->>>>>>> b55de1ba0d2fd4a2ed4fa2c84b4ecb85781b84ec
     <script src="assets/js/Bootstrap.js"></script>
 </body>
 
