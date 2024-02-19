@@ -403,9 +403,19 @@ $json_data_sec = json_encode($data_sec);
             background-color: #f2f2f2;
         }
 
-        /* .row .col-6:nth-child(2) .election-candidate p img {
-            display: none;
-        } */
+        .updating-animation {
+            animation: updatetime 4s ease-in-out;
+        }
+
+        @keyframes updatetime {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(540deg);
+            }
+        }
 
         @media (min-width:1300px) and (max-width:1600px) {
             .custom-container.adjustments-view {
@@ -426,8 +436,10 @@ $json_data_sec = json_encode($data_sec);
                             <div class="decision-updates ">
                                 <img src="assets/images/decision-2024.jpg" alt="decision-2024f" class=" w-100 h-100 object-fit-contain">
                                 <p class="fw-medium text-uppercase d-flex align-items-center justify-content-center gap-1">
-                                    <a href="" class="link-underline-opacity-0">
-                                        <img src="assets/images/load-updates.svg" alt="load-updates" class="w-100 h-100 object-fit-contain" width="10">
+                                    <a href="" class="link-underline-opacity-0 d-flex align-items-center">
+                                        <svg width="12" height="12" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" data-update-toggle="true" class="updating-animation me-1">
+                                            <path d="M9.63359 0.816406L8.61797 1.83203C7.73906 0.953125 6.52812 0.40625 5.2 0.40625C2.60234 0.40625 0.473437 2.45703 0.35625 5.01562C0.336719 5.15234 0.453906 5.25 0.590625 5.25H1.1375C1.25469 5.25 1.35234 5.17188 1.37187 5.03516C1.48906 3.02344 3.14922 1.42188 5.2 1.42188C6.25469 1.42188 7.21172 1.85156 7.89531 2.55469L6.84062 3.60938C6.68437 3.76562 6.80156 4 6.99687 4H9.80937C9.92656 4 10.0437 3.90234 10.0437 3.76562V0.972656C10.0437 0.777344 9.78984 0.660156 9.63359 0.816406ZM9.78984 5.25H9.24297C9.12578 5.25 9.02812 5.34766 9.00859 5.48438C8.89141 7.49609 7.23125 9.07812 5.2 9.07812C4.12578 9.07812 3.16875 8.66797 2.48516 7.96484L3.53984 6.91016C3.69609 6.75391 3.57891 6.5 3.38359 6.5H0.590625C0.453906 6.5 0.35625 6.61719 0.35625 6.73438V9.54688C0.35625 9.74219 0.590625 9.85938 0.746875 9.70312L1.7625 8.6875C2.64141 9.56641 3.85234 10.0938 5.2 10.0938C7.77812 10.0938 9.90703 8.0625 10.0242 5.50391C10.0437 5.36719 9.92656 5.25 9.78984 5.25Z" fill="#0a58ca" class="jsx-404944366"></path>
+                                        </svg>
                                         updated: 5:35 pm et
                                     </a>
                                 </p>
