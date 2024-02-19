@@ -307,7 +307,8 @@ $elections_data = ($data_date['elections']);
                         foreach ($eventsByMonth as $month => $events) {
                             $dateObj   = DateTime::createFromFormat('!m', $month);
                             $monthName = $dateObj->format('F');
-                            echo "<h3>$monthName</h3>";
+                            $currYear = date("Y");
+                            echo "<h3 class='month-head my-2'>$monthName $currYear</h3>";
                             $currYear = date("Y");
                             // Print month only if it hasn't been printed before
                             foreach ($events as $event) {
@@ -427,7 +428,7 @@ $elections_data = ($data_date['elections']);
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var headings = document.querySelectorAll("h3");
+            var headings = document.querySelectorAll(".month-head");
             headings.forEach(function(heading) {
                 var nextElement = heading.nextElementSibling;
                 if (!(nextElement && nextElement.classList.contains("elections-2024"))) {
