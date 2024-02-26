@@ -185,6 +185,10 @@
   border-radius: 50%;
   background: var(--primary-yellow, #ffcc00);
 }
+.elections-2024 span:nth-child(1) {
+  width: 90px;
+  display: inline-block;
+}
 .elections-2024 a {
   color: var(--light-mode-sub-text, #999);
   font-size: 12px;
@@ -201,4 +205,10 @@
     font-size: 48px;
     line-height: 50px;
   }
+}
+
+.elementor-kit-6 input[type="submit"]:hover {
+  color: #2e3192 !important;
+  font-weight: bold !important;
+  background-color: transparent !important;
 }

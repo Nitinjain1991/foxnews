@@ -1,119 +1,79 @@
-<!-- <?php
-        // API endpoint URL
-        $url = 'https://api.ap.org/v3/reports/Calendar-Elections2024-Live';
+<?php
 
-        // API key
-        $api_key = 'KLOLDjf5m2DcoiHVs6mijZkSz38dMQpA';
+// API endpoint URL
+$url = 'https://api.ap.org/v3/reports/Calendar-Elections2024-Live';
 
-        // Initialize cURL session
-        $ch = curl_init();
+// API key
+$api_key = 'KLOLDjf5m2DcoiHVs6mijZkSz38dMQpA';
 
-        // Set the URL
-        curl_setopt($ch, CURLOPT_URL, $url);
+// Initialize cURL session
+$ch = curl_init();
 
-        // Set method to GET
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+// Set the URL
+curl_setopt($ch, CURLOPT_URL, $url);
 
-        // Set headers
-        $headers = array(
-            'x-api-key: ' . $api_key,
-            'Accept: application/json', // Change to 'Accept: application/xml' for XML response
-            'Accept-Encoding: gzip'
-        );
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+// Set method to GET
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 
-        // Return the response as a string instead of outputting it directly
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+// Set headers
+$headers = array(
+    'x-api-key: ' . $api_key,
+    'Accept: application/json', // Change to 'Accept: application/xml' for XML response
+    'Accept-Encoding: gzip'
+);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
-        // Enable decompression of gzip-encoded responses
-        curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
+// Return the response as a string instead of outputting it directly
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        // Execute the cURL session
-        $response = curl_exec($ch);
+// Enable decompression of gzip-encoded responses
+curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
 
-        // Check for errors
-        if (curl_errno($ch)) {
-            echo 'Curl error: ' . curl_error($ch);
-        }
+// Execute the cURL session
+$response = curl_exec($ch);
 
-        // Close cURL session
-        curl_close($ch);
+// Check for errors
+if (curl_errno($ch)) {
+    echo 'Curl error: ' . curl_error($ch);
+}
 
-        // Decode JSON response
-        $data = json_decode($response, true);
+// Close cURL session
+curl_close($ch);
 
-        // Access ElectionCalendar2024 data
-        $electionCalendar = $data['ElectionCalendar2024'];
+// Decode JSON response
+$data = json_decode($response, true);
 
-        // Sort event information by event date
-        usort($electionCalendar['EventInformation'], function ($a, $b) {
-            return strtotime($a['eventDate']) - strtotime($b['eventDate']);
-        });
+// Access ElectionCalendar2024 data
+$electionCalendar = $data['ElectionCalendar2024'];
 
-        // Print last calendar update information
-        echo "Last Calendar Update: " . $electionCalendar['lastCalendarUpdate']['lastUpdated'] . "<br><br>";
-
-        // Get today's date in Y-m-d format
-        $todayDate = date("Y-m-d");
-
-        // Print event information for future events
-        echo "<h2>Upcoming</h2>";
-        foreach ($electionCalendar['EventInformation'] as $event) {
-            if ((strpos($event['calendarEvent'], 'Presidential') !== false || strpos($event['calendarEvent'], 'Republican') !== false || strpos($event['calendarEvent'], 'Caucus') !== false) && $event['eventDate'] >= $todayDate) {
-                echo "Event Date: " . $event['eventDate'] . "<br>";
-                echo "Event Day: " . date("d", strtotime($event['eventDate'])) . "<br>";
-                echo "Day: " . $event['day'] . "<br>";
-                echo "State: " . $event['state'] . "<br>";
-                echo "Calendar Event: " . $event['calendarEvent'] . "<br>";
-                echo "Tabulated by AP: " . $event['tabulatedByAP'] . "<br>";
-                echo "State Postal: " . $event['statePostal'] . "<br>";
-                if (isset($event['presPrimary'])) {
-                    echo "Presidential Primary: " . $event['presPrimary'] . "<br>";
-                }
-                if (isset($event['delegateEvent'])) {
-                    echo "Delegate Event: " . $event['delegateEvent'] . "<br>";
-                }
-                if (isset($event['govOrSenIncl'])) {
-                    echo "Gov/Sen Included: " . $event['govOrSenIncl'] . "<br>";
-                }
-                if (isset($event['notificationText'])) {
-                    echo "Notification Text: " . $event['notificationText'] . "<br>";
-                }
-                echo "<br>";
-            }
-        }
-
-        // Print event information for past events
-        echo "<h2>Past</h2>";
-        foreach ($electionCalendar['EventInformation'] as $event) {
-            if ((strpos($event['calendarEvent'], 'Presidential') !== false || strpos($event['calendarEvent'], 'Republican') !== false || strpos($event['calendarEvent'], 'Caucus') !== false) && $event['eventDate'] < $todayDate) {
-                echo "Event Date: " . $event['eventDate'] . "<br>";
-                echo "Event Day: " . date("d", strtotime($event['eventDate'])) . "<br>";
-                echo "Day: " . $event['day'] . "<br>";
-                echo "State: " . $event['state'] . "<br>";
-                echo "Calendar Event: " . $event['calendarEvent'] . "<br>";
-                echo "Tabulated by AP: " . $event['tabulatedByAP'] . "<br>";
-                echo "State Postal: " . $event['statePostal'] . "<br>";
-                if (isset($event['presPrimary'])) {
-                    echo "Presidential Primary: " . $event['presPrimary'] . "<br>";
-                }
-                if (isset($event['delegateEvent'])) {
-                    echo "Delegate Event: " . $event['delegateEvent'] . "<br>";
-                }
-                if (isset($event['govOrSenIncl'])) {
-                    echo "Gov/Sen Included: " . $event['govOrSenIncl'] . "<br>";
-                }
-                if (isset($event['notificationText'])) {
-                    echo "Notification Text: " . $event['notificationText'] . "<br>";
-                }
-                echo "<br>";
-            }
-        }
-
-        ?> -->
+// Sort event information by event date
+usort($electionCalendar['EventInformation'], function ($a, $b) {
+    return strtotime($a['eventDate']) - strtotime($b['eventDate']);
+});
 
 
+// Get today's date in Y-m-d format
+$todayDate = date("Y-m-d");
 
+// Organize upcoming events by month
+$upcomingEventsByMonth = array();
+foreach ($electionCalendar['EventInformation'] as $event) {
+    if ($event['eventDate'] >= $todayDate) {
+        $month = date("F Y", strtotime($event['eventDate']));
+        $upcomingEventsByMonth[$month][] = $event;
+    }
+}
+
+// Organize past events by month
+$pastEventsByMonth = array();
+foreach ($electionCalendar['EventInformation'] as $event) {
+    if ($event['eventDate'] < $todayDate) {
+        $month = date("F Y", strtotime($event['eventDate']));
+        $pastEventsByMonth[$month][] = $event;
+    }
+}
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -252,8 +212,8 @@
         }
 
         .calender-month .direction-arrow-left {
-            position: absolute;
-            top: 6px;
+            /* position: absolute;
+            top: 6px; */
             -webkit-transform: rotate(270deg);
             -ms-transform: rotate(270deg);
             transform: rotate(270deg);
@@ -286,7 +246,7 @@
         }
 
         .state-name {
-            font-size: 20px;
+            font-size: 18px;
             line-height: 24px;
             margin-right: 8px;
             font-weight: 600;
@@ -316,9 +276,9 @@
         }
 
         .election-labels-list {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: normal;
-            line-height: 24px;
+            line-height: 20px;
             font-style: normal;
         }
 
@@ -351,7 +311,7 @@
                 <svg width="12" height="12" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" data-update-toggle="true" class="updating-animation me-1">
                     <path d="M9.63359 0.816406L8.61797 1.83203C7.73906 0.953125 6.52812 0.40625 5.2 0.40625C2.60234 0.40625 0.473437 2.45703 0.35625 5.01562C0.336719 5.15234 0.453906 5.25 0.590625 5.25H1.1375C1.25469 5.25 1.35234 5.17188 1.37187 5.03516C1.48906 3.02344 3.14922 1.42188 5.2 1.42188C6.25469 1.42188 7.21172 1.85156 7.89531 2.55469L6.84062 3.60938C6.68437 3.76562 6.80156 4 6.99687 4H9.80937C9.92656 4 10.0437 3.90234 10.0437 3.76562V0.972656C10.0437 0.777344 9.78984 0.660156 9.63359 0.816406ZM9.78984 5.25H9.24297C9.12578 5.25 9.02812 5.34766 9.00859 5.48438C8.89141 7.49609 7.23125 9.07812 5.2 9.07812C4.12578 9.07812 3.16875 8.66797 2.48516 7.96484L3.53984 6.91016C3.69609 6.75391 3.57891 6.5 3.38359 6.5H0.590625C0.453906 6.5 0.35625 6.61719 0.35625 6.73438V9.54688C0.35625 9.74219 0.590625 9.85938 0.746875 9.70312L1.7625 8.6875C2.64141 9.56641 3.85234 10.0938 5.2 10.0938C7.77812 10.0938 9.90703 8.0625 10.0242 5.50391C10.0437 5.36719 9.92656 5.25 9.78984 5.25Z" fill="#000000" class="jsx-404944366"></path>
                 </svg>
-                <p class="mb-0 ms-1 fw-light    ">Last update Feb. 14, 11:59 AM ET</p>
+                <p class="mb-0 ms-1 fw-light"><?php echo "Last Update: " . $electionCalendar['lastCalendarUpdate']['lastUpdated']; ?></p>
             </div>
             <h1 class="page-title mt-0 mb-4 fw-semibold">2024 Primary Elections Calendar</h1>
 
@@ -370,277 +330,243 @@
 
             </div>
 
-            <div class="cal-container row">
+            <div class="cal-container row" id="upcomig-event"> 
                 <!-- main column -->
                 <div class="col-9">
                     <div class="upcoming-or-past d-flex align-items-center gap-2 mt-5">
                         <span class="section-title fw-semibold mb-0">Upcoming</span>
-                        <a href="" class="link-back">Skip to Past Dates</a>
+                        <a href="#pastElectionsContainer" class="link-back">Skip to Past Dates</a>
+                    </div>
+                    <!-- from february month -->
+                    <?php
+                    foreach ($upcomingEventsByMonth as $month => $events) { ?>
+                        <div class="row mt-5 position-relative">
+                            <div class="col-2">
+                                <div class="calender-month position-sticky" style="top: 20px;">
+
+                                    <h4 class="month-title"><?php echo $month;  ?></h4>
+                                    <?php
+                                    $first_day = mktime(0, 0, 0, date("n", strtotime($month)), 1, date("Y", strtotime($month)));
+
+                                    // Get the number of days in the month
+                                    $num_days = date('t', $first_day);
+
+                                    // Get the day of the week the first day of the month falls on
+                                    $first_day_of_week = date('w', $first_day);
+
+                                    ?>
+
+                                    <table class="w-100">
+                                        <tbody>
+                                            <tr>
+                                                <?php
+                                                $currentDay = 1;
+                                                for ($i = 0; $i < $first_day_of_week; $i++) {
+                                                    echo "<td>&nbsp;</td>";
+                                                }
+                                                for ($day = 1; $day <= $num_days; $day++) {
+                                                    $dateString = date("Y-m-d", mktime(0, 0, 0, date("n", strtotime($month)), $day, date("Y", strtotime($month))));
+                                                    $highlight = '';
+                                                    if (in_array($dateString, array_column($events, 'eventDate'))) {
+                                                        $highlight = 'background-color: #555555; color: #ffffff; font-weight: bolder;';
+                                                    } elseif (isset($pastEventsByMonth[$month]) && in_array($dateString, array_column($pastEventsByMonth[$month], 'eventDate'))) {
+                                                        $highlight = 'color: #555555;
+                                                background: #ebebeb;
+                                                font-weight: bolder;';
+                                                    }
+                                                    echo "<td style='$highlight'>$day</td>";
+                                                    if (($first_day_of_week + $day) % 7 == 0) {
+                                                        echo "</tr><tr>";
+                                                    }
+                                                }
+                                                ?>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="position-relative">
+                                        <a href="#pastElectionsContainer">
+                                            <svg class="direction-arrow-left pointer " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="1.33398" y="1.33325" width="13.3333" height="0.666667" fill="black"></rect>
+                                                <path d="M11.8626 7.66675L8.33403 4.13815L8.33403 14.6667L7.66737 14.6667L7.66737 4.13815L4.0007 7.66675L3.5293 7.19534L8.0007 3.00008L12.334 7.19534L11.8626 7.66675Z" fill="black"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-10 border-start" style="border-color: black !important;">
+                                <div class="row">
+                                    <?php
+                                    foreach ($events as $event) {
+                                    ?>
+                                        <div class="col-3 mt-4">
+                                            <div class="d-flex align-items-start gap-2 h-100">
+                                                <div class="date-box d-flex align-items-center justify-content-center"><?php echo date("d", strtotime($event['eventDate'])) ?></div>
+
+                                                <div class="d-flex flex-column justify-content-between h-100 row-gap-2">
+                                                    <div class="d-flex flex-column row-gap-2">
+                                                        <span class="state-name"><?php echo $event['state'] ?></span>
+
+                                                        <div class=" d-flex align-items-center gap-2">
+                                                            <?php if (isset($event['presPrimary'])) : ?>
+                                                                <?php $presPrimaryValues = explode(', ', $event['presPrimary']); ?>
+                                                                <?php foreach ($presPrimaryValues as $value) : ?>
+                                                                    <?php if ($value == "GOP") : ?>
+                                                                        <div class="delegate-pill-gop text-white">R</div>
+                                                                    <?php endif; ?>
+                                                                    <?php if ($value == "Dem") : ?>
+                                                                        <div class="delegate-pill-dem text-white">D</div>
+                                                                    <?php endif; ?>
+                                                                <?php endforeach; ?>
+                                                            <?php endif; ?>
+                                                        </div>
+
+
+                                                        <p class="election-labels-list mb-0 d-flex align-items-start gap-2">
+                                                            <span class="election-labels-dot"></span>
+                                                            <?php echo $event['calendarEvent']; ?>
+                                                        </p>
+                                                    </div>
+
+                                                    <a href="" class="callout-calendar d-flex align-items-center gap-2 text-decoration-none" data-icid="elections_calendar">Plan your vote in <?php echo $event['statePostal'] ?>.
+                                                        <svg width="20" height="20" viewBox="0 0 14 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="jsx-3116304872 callout-arrow clear-blue">
+                                                            <path d="M7.875 9.63777L10.9625 6.77079L1.75 6.77079L1.75 6.22913L10.9625 6.22913L7.875 3.24996L8.28748 2.86694L11.9583 6.49996L8.28748 10.0208L7.875 9.63777Z" class="jsx-3116304872"></path>
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+
+                <div class="col-3"></div>
+            </div>
+
+
+            <!-- past election calender -->
+            <div class="cal-container row" id="pastElectionsContainer">
+                <!-- main column -->
+                <div class="col-9">
+                    <div class="upcoming-or-past d-flex align-items-center gap-2 mt-5">
+                        <span class="section-title fw-semibold mb-0">Past</span>
+                        <a href="#upcomig-event" class="link-back">Skip to Upcoming Dates</a>
                     </div>
 
                     <!-- from february month -->
-                    <div class="row mt-3 position-relative">
-                        <div class="col-2">
-                            <div class="calender-month position-sticky" style="top: 20px;">
-                                <h4 class="month-title">FEBRUARY</h4>
-                                <div class="position-relative">
-                                    <svg class="direction-arrow-left pointer " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="1.33398" y="1.33325" width="13.3333" height="0.666667" fill="black"></rect>
-                                        <path d="M11.8626 7.66675L8.33403 4.13815L8.33403 14.6667L7.66737 14.6667L7.66737 4.13815L4.0007 7.66675L3.5293 7.19534L8.0007 3.00008L12.334 7.19534L11.8626 7.66675Z" fill="black"></path>
-                                    </svg>
-                                </div>
+                    <?php
+                    foreach ($pastEventsByMonth as $month => $events) { ?>
+                        <div class="row mt-3 position-relative">
+                            <div class="col-2">
+                                <div class="calender-month position-sticky" style="top: 20px;">
 
-                                <table class="w-100">
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td class="light-shade">3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td class="light-shade">6</td>
-                                            <td>7</td>
-                                            <td class="light-shade">8</td>
-                                            <td>9</td>
-                                            <td>10</td>
-                                        </tr>
-                                        <tr>
-                                            <td>11</td>
-                                            <td>12</td>
-                                            <td>13</td>
-                                            <td>14</td>
-                                            <td>15</td>
-                                            <td>16</td>
-                                            <td>17</td>
-                                        </tr>
-                                        <tr>
-                                            <td>18</td>
-                                            <td>19</td>
-                                            <td>20</td>
-                                            <td>21</td>
-                                            <td>22</td>
-                                            <td>23</td>
-                                            <td class="dark-shade">24</td>
-                                        </tr>
-                                        <tr>
-                                            <td>25</td>
-                                            <td>26</td>
-                                            <td class="dark-shade">27</td>
-                                            <td>28</td>
-                                            <td>29</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                                    <h4 class="month-title"><?php echo $month;  ?></h4>
+                                    <?php
+                                    $first_day = mktime(0, 0, 0, date("n", strtotime($month)), 1, date("Y", strtotime($month)));
 
-                        <div class="col-10 border-start" style="border-color: black !important;">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="d-flex align-items-start gap-2 h-100">
-                                        <div class="date-box d-flex align-items-center justify-content-center">24</div>
+                                    // Get the number of days in the month
+                                    $num_days = date('t', $first_day);
 
-                                        <div class="d-flex flex-column justify-content-between h-100 row-gap-2">
-                                            <div class="d-flex flex-column row-gap-2">
-                                                <span class="state-name">South Carolina</span>
+                                    // Get the day of the week the first day of the month falls on
+                                    $first_day_of_week = date('w', $first_day);
+                                    ?>
 
-                                                <div class=" d-flex align-items-center gap-2">
-                                                    <div class="delegate-pill-gop text-white">R 50</div>
-                                                    <span class="delegates-label">delegates</span>
-                                                </div>
 
-                                                <p class="election-labels-list mb-0 d-flex align-items-start gap-2">
-                                                    <span class="election-labels-dot"></span>
-                                                    Republican Presidential Primary
-                                                </p>
-                                            </div>
+                                    <table class="w-100">
+                                        <tbody>
+                                            <tr>
+                                                <?php
+                                                $currentDay = 1;
+                                                for ($i = 0; $i < $first_day_of_week; $i++) {
+                                                    echo "<td>&nbsp;</td>";
+                                                }
+                                                for ($day = 1; $day <= $num_days; $day++) {
+                                                    $dateString = date("Y-m-d", mktime(0, 0, 0, date("n", strtotime($month)), $day, date("Y", strtotime($month))));
+                                                    $highlight = in_array($dateString, array_column($events, 'eventDate')) ? 'color: #555555;
+                                            background: #ebebeb;
+                                            font-weight: bolder;' : '';
+                                                    echo "<td style='$highlight'>$day</td>";
+                                                    if (($first_day_of_week + $day) % 7 == 0) {
+                                                        echo "</tr><tr>";
+                                                    }
+                                                }
+                                                ?>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
-                                            <a href="" class="callout-calendar d-flex align-items-center gap-2 text-decoration-none" data-icid="elections_calendar">Plan your vote in S.C.
-                                                <svg width="20" height="20" viewBox="0 0 14 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="jsx-3116304872 callout-arrow clear-blue">
-                                                    <path d="M7.875 9.63777L10.9625 6.77079L1.75 6.77079L1.75 6.22913L10.9625 6.22913L7.875 3.24996L8.28748 2.86694L11.9583 6.49996L8.28748 10.0208L7.875 9.63777Z" class="jsx-3116304872"></path>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="d-flex align-items-start gap-2 h-100">
-                                        <div class="date-box d-flex align-items-center justify-content-center">27</div>
-
-                                        <div class="d-flex flex-column justify-content-between h-100 row-gap-2">
-                                            <div class="d-flex flex-column row-gap-2">
-                                                <span class="state-name">Michigan</span>
-
-                                                <div class=" d-flex align-items-center gap-2">
-                                                    <div class="delegate-pill-dem text-white">D 117</div>
-                                                    <div class="delegate-pill-gop text-white">R 50</div>
-                                                    <span class="delegates-label">delegates</span>
-                                                </div>
-
-                                                <p class="election-labels-list mb-0 d-flex align-items-start gap-2">
-                                                    <span class="election-labels-dot"></span>
-                                                    Presidential Primary
-                                                </p>
-                                            </div>
-
-                                            <a href="" class="callout-calendar d-flex align-items-center gap-2 text-decoration-none" data-icid="elections_calendar">Plan your vote in S.C.
-                                                <svg width="20" height="20" viewBox="0 0 14 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="jsx-3116304872 callout-arrow clear-blue">
-                                                    <path d="M7.875 9.63777L10.9625 6.77079L1.75 6.77079L1.75 6.22913L10.9625 6.22913L7.875 3.24996L8.28748 2.86694L11.9583 6.49996L8.28748 10.0208L7.875 9.63777Z" class="jsx-3116304872"></path>
-                                                </svg>
-                                            </a>
-                                        </div>
+                                    <div class="position-relative">
+                                        <a href="#pastElectionsContainer">
+                                            <svg class="direction-arrow-left pointer " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="1.33398" y="1.33325" width="13.3333" height="0.666667" fill="black"></rect>
+                                                <path d="M11.8626 7.66675L8.33403 4.13815L8.33403 14.6667L7.66737 14.6667L7.66737 4.13815L4.0007 7.66675L3.5293 7.19534L8.0007 3.00008L12.334 7.19534L11.8626 7.66675Z" fill="black"></path>
+                                            </svg>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
+                            <div class="col-10 border-start" style="border-color: black !important;">
+                                <div class="row">
+                                    <?php
+                                    foreach ($events as $event) {
+                                    ?>
+                                        <div class="col-4 mt-4">
+                                            <div class="d-flex align-items-start gap-2 h-100">
+                                                <div class="date-box d-flex align-items-center justify-content-center"><?php echo date("d", strtotime($event['eventDate'])) ?></div>
 
-                    <!-- march month -->
-                    <div class="row mt-5 position-relative">
-                        <div class="col-2">
-                            <div class="calender-month position-sticky" style="top: 20px;">
-                                <h4 class="month-title">march</h4>
-                                <div class="position-relative">
-                                    <svg class="direction-arrow-left pointer " width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="1.33398" y="1.33325" width="13.3333" height="0.666667" fill="black"></rect>
-                                        <path d="M11.8626 7.66675L8.33403 4.13815L8.33403 14.6667L7.66737 14.6667L7.66737 4.13815L4.0007 7.66675L3.5293 7.19534L8.0007 3.00008L12.334 7.19534L11.8626 7.66675Z" fill="black"></path>
-                                    </svg>
-                                </div>
+                                                <div class="d-flex flex-column justify-content-between h-100 row-gap-2">
+                                                    <div class="d-flex flex-column row-gap-2">
+                                                        <span class="state-name"><?php echo $event['state'] ?></span>
 
-                                <table class="w-100">
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td class="light-shade">3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td class="light-shade">6</td>
-                                            <td>7</td>
-                                            <td class="light-shade">8</td>
-                                            <td>9</td>
-                                            <td>10</td>
-                                        </tr>
-                                        <tr>
-                                            <td>11</td>
-                                            <td>12</td>
-                                            <td>13</td>
-                                            <td>14</td>
-                                            <td>15</td>
-                                            <td>16</td>
-                                            <td>17</td>
-                                        </tr>
-                                        <tr>
-                                            <td>18</td>
-                                            <td>19</td>
-                                            <td>20</td>
-                                            <td>21</td>
-                                            <td>22</td>
-                                            <td>23</td>
-                                            <td class="dark-shade">24</td>
-                                        </tr>
-                                        <tr>
-                                            <td>25</td>
-                                            <td>26</td>
-                                            <td class="dark-shade">27</td>
-                                            <td>28</td>
-                                            <td>29</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                                                        <div class=" d-flex align-items-center gap-2">
+                                                            <?php if (isset($event['presPrimary'])) : ?>
+                                                                <?php $presPrimaryValues = explode(', ', $event['presPrimary']); ?>
+                                                                <?php foreach ($presPrimaryValues as $value) : ?>
+                                                                    <?php if ($value == "GOP") : ?>
+                                                                        <div class="delegate-pill-gop text-white">R</div>
+                                                                    <?php endif; ?>
+                                                                    <?php if ($value == "Dem") : ?>
+                                                                        <div class="delegate-pill-dem text-white">D</div>
+                                                                    <?php endif; ?>
+                                                                <?php endforeach; ?>
+                                                            <?php endif; ?>
 
-                        <div class="col-10 border-start" style="border-color: black !important;">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="d-flex align-items-start gap-2 h-100">
-                                        <div class="date-box d-flex align-items-center justify-content-center">24</div>
+                                                        </div>
 
-                                        <div class="d-flex flex-column justify-content-between h-100 row-gap-2">
-                                            <div class="d-flex flex-column row-gap-2">
-                                                <span class="state-name">South Carolina</span>
+                                                        <p class="election-labels-list mb-0 d-flex align-items-start gap-2">
+                                                            <span class="election-labels-dot"></span>
+                                                            <?php echo $event['calendarEvent']; ?>
+                                                        </p>
+                                                    </div>
 
-                                                <div class=" d-flex align-items-center gap-2">
-                                                    <div class="delegate-pill-gop text-white">R 50</div>
-                                                    <span class="delegates-label">delegates</span>
+                                                    <a href="" class="callout-calendar d-flex align-items-center gap-2 text-decoration-none" data-icid="elections_calendar">Plan your vote in <?php echo $event['statePostal'] ?>.
+                                                        <svg width="20" height="20" viewBox="0 0 14 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="jsx-3116304872 callout-arrow clear-blue">
+                                                            <path d="M7.875 9.63777L10.9625 6.77079L1.75 6.77079L1.75 6.22913L10.9625 6.22913L7.875 3.24996L8.28748 2.86694L11.9583 6.49996L8.28748 10.0208L7.875 9.63777Z" class="jsx-3116304872"></path>
+                                                        </svg>
+                                                    </a>
                                                 </div>
-
-                                                <p class="election-labels-list mb-0 d-flex align-items-start gap-2">
-                                                    <span class="election-labels-dot"></span>
-                                                    Republican Presidential Primary
-                                                </p>
                                             </div>
-
-                                            <a href="" class="callout-calendar d-flex align-items-center gap-2 text-decoration-none" data-icid="elections_calendar">Plan your vote in S.C.
-                                                <svg width="20" height="20" viewBox="0 0 14 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="jsx-3116304872 callout-arrow clear-blue">
-                                                    <path d="M7.875 9.63777L10.9625 6.77079L1.75 6.77079L1.75 6.22913L10.9625 6.22913L7.875 3.24996L8.28748 2.86694L11.9583 6.49996L8.28748 10.0208L7.875 9.63777Z" class="jsx-3116304872"></path>
-                                                </svg>
-                                            </a>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="d-flex align-items-start gap-2 h-100">
-                                        <div class="date-box d-flex align-items-center justify-content-center">27</div>
-
-                                        <div class="d-flex flex-column justify-content-between h-100 row-gap-2">
-                                            <div class="d-flex flex-column row-gap-2">
-                                                <span class="state-name">Michigan</span>
-
-                                                <div class=" d-flex align-items-center gap-2">
-                                                    <div class="delegate-pill-dem text-white">D 117</div>
-                                                    <div class="delegate-pill-gop text-white">R 50</div>
-                                                    <span class="delegates-label">delegates</span>
-                                                </div>
-
-                                                <p class="election-labels-list mb-0 d-flex align-items-start gap-2">
-                                                    <span class="election-labels-dot"></span>
-                                                    Presidential Primary
-                                                </p>
-                                            </div>
-
-                                            <a href="" class="callout-calendar d-flex align-items-center gap-2 text-decoration-none" data-icid="elections_calendar">Plan your vote in S.C.
-                                                <svg width="20" height="20" viewBox="0 0 14 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="jsx-3116304872 callout-arrow clear-blue">
-                                                    <path d="M7.875 9.63777L10.9625 6.77079L1.75 6.77079L1.75 6.22913L10.9625 6.22913L7.875 3.24996L8.28748 2.86694L11.9583 6.49996L8.28748 10.0208L7.875 9.63777Z" class="jsx-3116304872"></path>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
+                    <?php } ?>
                 </div>
             </div>
 
-            <div class="col-3"></div>
-        </div>
+
         </div>
     </section>
-
-
-
-
-
-
-
 
     <script src="assets/js/Bootstrap.js"></script>
 </body>

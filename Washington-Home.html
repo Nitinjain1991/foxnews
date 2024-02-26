@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Washington Examiner - US politics; conservative insights</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="icon"
+        href="https://wex-s3.s3.us-east-1.amazonaws.com/wp-content/uploads/2023/11/cropped-favicon-32x32.png"
+        sizes="32x32">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        .clan-container {
+            max-width: 1080px;
+            margin: 0px auto;
+            padding: 0px 12px;
+        }
+
+        .font-roboto {
+            font-family: "Roboto", sans-serif;
+        }
+
+        .main-news a {
+            transition: all .2s ease-in-out;
+            color: white !important;
+            text-decoration: none;
+        }
+
+        .main-news:hover a:not(.main-news:hover a:nth-child(2)) {
+            color: #dc3545 !important;
+        }
+
+        .main-news img {
+            height: 320px;
+        }
+
+        .main-news .entry-title {
+            font-size: 24px !important;
+            line-height: 28px;
+            font-weight: 900;
+            letter-spacing: -.5px;
+            color: white;
+        }
+
+        .post-category {
+            background-color: #dd3333;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .category-posts {
+            cursor: pointer;
+        }
+
+        .category-posts img {
+            width: 210px !important;
+            height: 147px;
+            object-fit: cover !important;
+        }
+
+        .category-posts a {
+            transition: all .2s ease-in-out;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+        }
+
+        .category-posts:hover h3 a {
+            color: #dc3545 !important;
+        }
+
+        .category-posts .entry-title {
+            font-size: 19px !important;
+            line-height: 28px;
+            font-weight: 900;
+            letter-spacing: -.5px;
+            color: white;
+        }
+
+        .mini-category-posts {
+            cursor: pointer;
+        }
+
+        .mini-category-posts img {
+            width: 112px !important;
+            height: 68px;
+        }
+
+        .mini-category-posts a {
+            transition: all .2s ease-in-out;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+        }
+
+        .mini-category-posts:hover h3 a {
+            color: #dc3545 !important;
+        }
+
+        .mini-category-posts .entry-title {
+            font-size: 19px !important;
+            line-height: 28px;
+            font-weight: 900;
+            letter-spacing: -.5px;
+            color: white;
+        }
+
+        .debates.category-posts>a {
+            height: 110px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .debates.category-posts img {
+            width: 100% !important;
+            object-position: right;
+        }
+
+        .newsletters-magzine .pulldown-size,
+        .newsletters-magzine .block-title {
+            font-size: 24px !important;
+            font-weight: 500;
+            line-height: 31px;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .newsletters-magzine img {
+            height: 260px;
+        }
+
+        .newsletters-magzine .subscribe-signup-btn {
+            padding: 9px 36px;
+            font-size: 18px !important;
+            font-weight: bold;
+            border-radius: 5px;
+            background-color: #dc3545;
+            color: #fff;
+            text-decoration: none;
+            transition: all .2s ease-in-out;
+        }
+
+        .newsletters-magzine .subscribe-signup-btn:hover {
+            background-color: #222222;
+            color: #fff;
+        }
+
+        .Opinion-b .block-title a,
+        .elections-2024 .block-title a,
+        .elections-2024 .pulldown-category {
+            font-size: 14px !important;
+            font-weight: 400;
+            line-height: 31px;
+            color: #000;
+            text-decoration: none;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .Opinion-b .block-title a,
+        .elections-2024 .block-title a {
+            font-size: 36px !important;
+            font-weight: 800;
+        }
+
+        .elections-2024 .pulldown-category {
+            transition: all .3s ease-in-out;
+            display: flex;
+            gap: 10px;
+        }
+
+        .elections-2024 .pulldown-category:hover {
+            gap: 20px;
+        }
+
+        .elections-2024 .entry-title {
+            font-size: 19px !important;
+            line-height: 28px;
+            font-weight: 900;
+            letter-spacing: -.5px;
+            color: white;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .elections-2024 .entry-title.module-title {
+            font-size: 16px !important;
+        }
+
+        .elections-2024 a {
+            transition: all .2s ease-in-out;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            display: block;
+        }
+
+        .elections-2024 .entry-title a:hover,
+        .illusion-2024:hover h3 a {
+            color: #dc3545 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- content and ads area -->
+    <section class="py-4">
+        <div class="clan-container">
+            <!-- restoring-america -->
+            <div class="text-center">
+                <a id="aw0" target="_blank"
+                    href="https://googleads.g.doubleclick.net/pcs/click?xai=AKAOjstOGSMuOWt-v2IVM9yu0lA4drSfiBJ7YBlAkcMjJlJGma5E0LqUL8rCB5vyHcHDrfs3UO0yPwP8iTVxmYBtwjhCFK-Ez9S1qMQ-gG63uri691l5AFmAXI3tB6EPlMLCZ9SGnI1qYMLndfvUkJb8Dz4qkioNhWzBCdSgakoJsLlzjdzHfdJtupXMcnjUNmSfx3VCRyZM75IfOvI9bhFk_nqhRm9rnKmVxOxc2TNMyfW3EJmaFOOflxWzebb34_QYl-1fkkdcz_GTlfbDN3RFLXtMzsXgWJwdVSXejMirAaOPIrmjNw7cXPUkiQ1Z9MEsrMTNZ8aKqwQbZ15bqg1a8BwYNklmitRwhc--VFBeesTXe0QXaXMXwI02UQvarEpJyFGL9xWtGASuHiWIsV_2ffetTQ&amp;sai=AMfl-YQTTyYWRfNAtlBQH3HteWCjEQrwWrVB1wUAPblThsJxMCNhEdlFRblY5c78xOpekL6lZ3YeCBBG9CfMoLTbd_Pb8q_x_uec6SyDgKYQ88TErzDXQgAIGK4Wni98IORj6MsMr3PVZH7ixY7Kp__mvC4dhm5DWw&amp;sig=Cg0ArKJSzAXKFAe73khd&amp;fbs_aeid=%5Bgw_fbsaeid%5D&amp;adurl=https://www.washingtonexaminer.com/section/restoring-america/patriotism-unity/%3Futm_source%3Dhomepage%26utm_medium%3Dbanner%26utm_campaign%3Drestoringamerica%26utm_id%3Drestoringamerica&amp;nm=2"
+                    onfocus="ss('aw0')" onmousedown="st('aw0')" onmouseover="ss('aw0')" onclick="ha('aw0')">
+
+                    <img src="assets/images/restoring-america.jfif" alt="restoring-america"
+                        class="w-75 object-fit-contain">
+                </a>
+            </div>
+
+            <div class="row mt-4 border-bottom my-2" style="border-color: #888888!important;">
+                <div class="col-6">
+                    <div class="position-relative main-news">
+                        <a
+                            href="https://www.washingtonexaminer.com/opinion/editorials/2872446/biden-brings-racial-division-to-airwaves/">
+                            <img src="assets/images/bigger-biden.jpg" alt="bigger-biden" class="w-100 object-fit-cover">
+                        </a>
+
+                        <div class="position-absolute bottom-0 p-2 bg-black start-0 end-0 text-start">
+                            <h3 class="entry-title font-roboto mb-1" style="color:white;">
+                                <a href="https://www.washingtonexaminer.com/opinion/editorials/2872446/biden-brings-racial-division-to-airwaves/"
+                                    title="Read more">Biden brings racial division to nation’s airwaves</a>
+                            </h3>
+                            <a href="https://www.washingtonexaminer.com/section/opinion/editorials/"
+                                class="post-category font-roboto p-1">Editorials</a>
+                        </div>
+                    </div>
+
+                    <div class="border-top my-2" style="border-color: #888888!important;"></div>
+
+                    <div class="category-posts d-flex align-items-start gap-2">
+                        <a href="https://www.washingtonexaminer.com/news/campaigns/2884858/koch-backed-americans-for-prosperity-cuts-off-money-to-haley-after-south-carolina-defeat/"
+                            rel="bookmark"
+                            title="Koch-backed Americans for Prosperity cuts off money to Haley after South Carolina defeat">
+                            <img src="assets/images/AP24056082591277.jpg" alt="AP24056082591277"
+                                class="w-100 object-fit-cover">
+                        </a>
+
+                        <div class="text-start pt-2">
+                            <a href="https://www.washingtonexaminer.com/section/news/campaigns/"
+                                class="post-category font-roboto p-1 text-white">Campaigns</a>
+                            <h3 class="entry-title font-roboto mb-1 mt-2" style="color:white;">
+                                <a href="https://www.washingtonexaminer.com/news/campaigns/2884858/koch-backed-americans-for-prosperity-cuts-off-money-to-haley-after-south-carolina-defeat/"
+                                    title="Read more">Haley suffers latest loss as Koch network cuts off money to
+                                    her</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 border-start my-2" style="border-color: #888888!important;">
+                    <div class="category-posts d-flex align-items-start gap-2">
+                        <img src="assets/images/rival-and-biden.jpg" alt="rival-and-biden"
+                            class="w-100 object-fit-cover">
+
+                        <div class="text-start pt-2">
+                            <a href="https://www.washingtonexaminer.com/section/news/campaigns/"
+                                class="post-category font-roboto p-1 text-white">Campaigns</a>
+
+                            <h3 class="entry-title font-roboto mb-1 mt-2">
+                                <a href="https://www.washingtonexaminer.com/news/campaigns/2884854/rival-strategist-admits-to-being-behind-fake-biden-robocall-discouraging-citizens-from-voting/"
+                                    rel="bookmark"
+                                    title="Rival strategist admits to being behind fake Biden robocall discouraging citizens from voting">Rival
+                                    strategist admits to being behind fake Biden robocall discouraging citizens from
+                                    voting
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="border-top my-2" style="border-color: #888888!important;"></div>
+
+                    <div class="category-posts d-flex align-items-start gap-2">
+                        <img src="assets/images/patrick.jpg" alt="patrick" class="w-100 object-fit-cover">
+
+                        <div class="text-start pt-2">
+                            <a href="https://www.washingtonexaminer.com/section/news/house/"
+                                class="post-category font-roboto p-1 text-white">House</a>
+
+                            <h3 class="entry-title font-roboto mb-1 mt-2">
+                                <a href="https://www.washingtonexaminer.com/news/house/2884928/patrick-mchenry-says-gop-needs-speaker-johnson-to-be-better-as-shutdown-looms/"
+                                    rel="bookmark"
+                                    title="Patrick McHenry says GOP needs Speaker Johnson to ‘be better’ as shutdown looms">
+                                    Patrick McHenry says GOP needs Speaker Johnson to ‘be better’ as shutdown looms
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="border-top my-2" style="border-color: #888888!important;"></div>
+
+                    <div class="category-posts d-flex align-items-start gap-2">
+                        <img src="assets/images/fani willis.jpg" alt="fani willis" class="w-100 object-fit-cover">
+
+                        <div class="text-start pt-2">
+                            <a href="https://www.washingtonexaminer.com/section/news/"
+                                class="post-category font-roboto p-1 text-white">news</a>
+
+                            <h3 class="entry-title font-roboto mb-1 mt-2">
+                                <a href="https://www.washingtonexaminer.com/news/2884425/time-to-indict-and-disbar-fani-willis-cell-phone-data-report-met-with-fury/"
+                                    rel="bookmark"
+                                    title="‘Time to Indict and Disbar’: Fani Willis cellphone data report met with fury">‘Time
+                                    to Indict and Disbar’: Fani Willis cellphone data report met with fury</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- small blog possts -->
+            <div class="d-grid mt-4 gap-4" style="grid-template-columns: 1fr 1fr;">
+                <div class="mini-category-posts d-flex align-items-start gap-2">
+                    <a href="https://www.washingtonexaminer.com/news/campaigns/2884892/nikki-haley-40-percent-case-trump-michigan-primary/"
+                        rel="bookmark"
+                        title="Nikki Haley makes ‘40%’ case against Trump in Michigan days before primary">
+                        <img src="assets/images/mini-nikki-haley.png" alt="mini-nikki-haley"
+                            class="object-fit-cover"></a>
+
+                    <div class="text-start">
+                        <h3 class="entry-title font-roboto">
+                            <a href="https://www.washingtonexaminer.com/news/campaigns/2884892/nikki-haley-40-percent-case-trump-michigan-primary/"
+                                rel="bookmark"
+                                title="Nikki Haley makes ‘40%’ case against Trump in Michigan days before primary">Nikki
+                                Haley makes ‘40%’ case against Trump in Michigan days before primary</a>
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="mini-category-posts d-flex align-items-start gap-2">
+                    <a href="https://www.washingtonexaminer.com/news/2884657/progress-gaza-ceasefire-depends-hamas-demands-netanyahu/"
+                        rel="bookmark" title="Progress on Gaza ceasefire depends on Hamas’s ‘crazy demands’: Netanyahu">
+                        <img src="assets/images/netanyahu.jpg" alt="netanyahu.jpg" class="object-fit-cover"></a>
+
+                    <div class="text-start">
+                        <h3 class="entry-title font-roboto">
+                            <a href="https://www.washingtonexaminer.com/news/2884657/progress-gaza-ceasefire-depends-hamas-demands-netanyahu/"
+                                rel="bookmark"
+                                title="Progress on Gaza ceasefire depends on Hamas’s ‘crazy demands’: Netanyahu">Progress
+                                on Gaza ceasefire depends on Hamas’s ‘crazy demands’: Netanyahu</a>
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="mini-category-posts d-flex align-items-start gap-2">
+                    <a href="https://www.washingtonexaminer.com/news/2884837/kemp-blames-bidens-inaction-on-border-security-for-death-of-georgia-college-student/"
+                        rel="bookmark"
+                        title="Kemp blames Biden’s inaction on border security for death of Georgia college student">
+                        <img src="assets/images/kemp-blasts.jpg" alt="kemp-blasts.jpg" class="object-fit-cover">
+                    </a>
+
+                    <div class="text-start">
+                        <h3 class="entry-title font-roboto">
+                            <a href="https://www.washingtonexaminer.com/news/2884837/kemp-blames-bidens-inaction-on-border-security-for-death-of-georgia-college-student/"
+                                rel="bookmark"
+                                title="Kemp blames Biden’s inaction on border security for death of Georgia college student">'Your
+                                failures': Kemp blasts Biden's border policies for death of Georgia college
+                                student</a>
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="mini-category-posts d-flex align-items-start gap-2">
+                    <a href="https://www.washingtonexaminer.com/news/2884655/man-sets-himself-on-fire-outside-dcs-israeli-embassy/"
+                        rel="bookmark" title="Active-duty airman sets himself on fire outside DC’s Israeli Embassy">
+                        <img src="assets/images/israeli-embassay.jpg" alt="israeli-embassay" class="object-fit-cover">
+                    </a>
+
+                    <div class="text-start">
+                        <h3 class="entry-title font-roboto">
+                            <a href="https://www.washingtonexaminer.com/news/2884655/man-sets-himself-on-fire-outside-dcs-israeli-embassy/"
+                                rel="bookmark"
+                                title="Active-duty airman sets himself on fire outside DC’s Israeli Embassy">Active-duty
+                                airman sets himself on fire outside DC’s Israeli Embassy</a>
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="mini-category-posts d-flex align-items-start gap-2">
+                    <a href="https://www.washingtonexaminer.com/news/2884518/nancy-mace-contends-gop-is-pro-america-not-pro-russia-amid-criticism-on-stalled-ukraine-aid/"
+                        rel="bookmark"
+                        title="Nancy Mace contends GOP is ‘pro-America,’ not ‘pro-Russia’ amid criticism on stalled Ukraine aid">
+                        <img src="assets/images/nancy-mac.jpg" alt="nancy-mac.jpg" class="object-fit-cover"></a>
+
+                    <div class="text-start">
+                        <h3 class="entry-title font-roboto">
+                            <a href="https://www.washingtonexaminer.com/news/2884518/nancy-mace-contends-gop-is-pro-america-not-pro-russia-amid-criticism-on-stalled-ukraine-aid/"
+                                rel="bookmark"
+                                title="Nancy Mace contends GOP is ‘pro-America,’ not ‘pro-Russia’ amid criticism on stalled Ukraine aid">'This
+                                is what the Left does': Nancy Mace rips Democrats in debate over foreign aid</a>
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="mini-category-posts d-flex align-items-start gap-2">
+                    <a href="https://www.washingtonexaminer.com/news/2884815/italian-snl-begins-new-season-with-parody-of-joe-biden/"
+                        rel="bookmark" title="Italian ‘SNL’ begins new season with parody of Joe Biden">
+                        <img src="assets/images/old-biden.jpg" alt="old-biden.jpg" class="object-fit-cover">
+                    </a>
+
+                    <div class="text-start">
+                        <h3 class="entry-title font-roboto">
+                            <a href="https://www.washingtonexaminer.com/news/2884815/italian-snl-begins-new-season-with-parody-of-joe-biden/"
+                                rel="bookmark" title="Italian ‘SNL’ begins new season with parody of Joe Biden">Italian
+                                ‘SNL’
+                                begins new season with parody of Joe Biden</a>
+                        </h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- cost of wars -->
+            <div class="border-top border-bottom py-2 my-3" style="border-color: #888888!important;">
+                <img src="assets/images/Ukraine_TwoYears.jpg" alt="Ukraine_TwoYears" class=" w-100 object-fit-contain">
+            </div>
+
+            <!-- more debates mini blogs -->
+            <div class="d-grid gap-4" style="grid-template-columns: 1fr 1fr 1fr 1fr 1fr;">
+                <div class="debates category-posts d-flex flex-column align-items-start gap-2">
+                    <a href="https://www.washingtonexaminer.com/news/campaigns/2884411/gavin-newsom-calls-bidens-age-a-gift-rather-than-a-liability/"
+                        rel="bookmark" title="Gavin Newsom calls Biden’s age a ‘gift’ rather than a liability">
+                        <img src="assets/images/gavin newsom.jpg" alt="gavin newsom" class="w-100 object-fit-cover">
+                    </a>
+
+                    <div class="text-start">
+                        <h3 class="entry-title font-roboto mb-1 mt-2" style="color:white;">
+                            <a href="https://www.washingtonexaminer.com/news/campaigns/2884411/gavin-newsom-calls-bidens-age-a-gift-rather-than-a-liability/"
+                                rel="bookmark"
+                                title="Gavin Newsom calls Biden’s age a ‘gift’ rather than a liability">Gavin Newsom
+                                calls Biden’s age a ‘gift’ rather than a liability</a>
+                        </h3>
+                        <a href="https://www.washingtonexaminer.com/section/news/campaigns/"
+                            class="post-category font-roboto p-1 text-white">Campaigns</a>
+                    </div>
+                </div>
+
+                <div class="debates category-posts d-flex flex-column align-items-start gap-2">
+                    <a href="https://www.washingtonexaminer.com/news/2884272/concerned-russia-interfere-2024-election-jake-sullivan/"
+                        rel="bookmark"
+                        title="Jake Sullivan says plenty of ‘concerns’ Russia could interfere in 2024 election, but ‘can’t speak to’ evidence">
+                        <img src="assets/images/sullivan.jpg" alt="sullivan.jpg" class="w-100 object-fit-cover">
+                    </a>
+
+                    <div class="text-start">
+                        <h3 class="entry-title font-roboto mb-1 mt-2" style="color:white;">
+                            <a href="https://www.washingtonexaminer.com/news/2884272/concerned-russia-interfere-2024-election-jake-sullivan/"
+                                title="Read more">Sullivan says 'concerns' Russia could interfere in 2024
+                                election</a>
+                        </h3>
+                        <a href="https://www.washingtonexaminer.com/section/news/"
+                            class="post-category font-roboto p-1 text-white">news</a>
+                    </div>
+                </div>
+
+                <div class="debates category-posts d-flex flex-column align-items-start gap-2">
+                    <a href="https://www.washingtonexaminer.com/news/campaigns/2884365/byron-donalds-defends-trumps-comments-about-black-voters/"
+                        rel="bookmark" title="Byron Donalds defends Trump’s comments about black voters">
+                        <img src="assets/images/byron donalds.jpg" alt="byron donalds.jpg"
+                            class="w-100 object-fit-cover">
+                    </a>
+
+                    <div class="text-start">
+                        <h3 class="entry-title font-roboto mb-1 mt-2" style="color:white;">
+                            <a href="https://www.washingtonexaminer.com/news/campaigns/2884365/byron-donalds-defends-trumps-comments-about-black-voters/"
+                                rel="bookmark" title="Byron Donalds defends Trump’s comments about black voters">Byron
+                                Donalds
+                                defends Trump’s comments about black voters</a>
+                        </h3>
+                        <a href="https://www.washingtonexaminer.com/section/news/campaigns/"
+                            class="post-category font-roboto p-1 text-white">Campaigns</a>
+                    </div>
+                </div>
+
+                <div class="debates category-posts d-flex flex-column align-items-start gap-2">
+                    <a href="https://www.washingtonexaminer.com/news/2884433/no-labels-would-definitely-be-interested-in-nikki-haley-joe-cunningham/"
+                        rel="bookmark"
+                        title="No Labels would ‘definitely be interested’ in Nikki Haley: Joe Cunningham">
+                        <img src="assets/images/closer-to-haley.jpg" alt="closer-to-haley.jpg"
+                            class="w-100 object-fit-cover">
+                    </a>
+
+                    <div class="text-start">
+                        <h3 class="entry-title font-roboto mb-1 mt-2" style="color:white;">
+                            <a href="https://www.washingtonexaminer.com/news/2884433/no-labels-would-definitely-be-interested-in-nikki-haley-joe-cunningham/"
+                                title="Read more">No Labels would 'definitely be interested' in Haley:
+                                Cunningham</a>
+                        </h3>
+                        <a href="https://www.washingtonexaminer.com/section/news/"
+                            class="post-category font-roboto p-1 text-white">news</a>
+                    </div>
+                </div>
+
+                <div class="debates category-posts d-flex flex-column align-items-start gap-2">
+                    <a href="https://www.washingtonexaminer.com/opinion/2872108/supreme-court-set-block-biden-abuse-of-power-yet-again/"
+                        rel="bookmark" title="Supreme Court set to block Biden’s abuse of power yet again">
+                        <img src="assets/images/biden-along-with-car.jpg" alt="biden-along-with-car.jpg"
+                            class="w-100 object-fit-cover">
+                    </a>
+
+                    <div class="text-start">
+                        <h3 class="entry-title font-roboto mb-1 mt-2" style="color:white;">
+                            <a href="https://www.washingtonexaminer.com/opinion/2872108/supreme-court-set-block-biden-abuse-of-power-yet-again/"
+                                rel="bookmark"
+                                title="Supreme Court set to block Biden’s abuse of power yet again">Supreme Court
+                                set to block Biden’s abuse of power yet again</a>
+                        </h3>
+                        <a href="https://www.washingtonexaminer.com/section/opinion/editorials/"
+                            class="post-category font-roboto p-1 text-white">Editorials</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- subscribe and sign up newsletter -->
+            <div class="row newsletters-magzine my-4">
+                <div class="col-6">
+                    <h4 class="block-title">
+                        <a href="https://www.washingtonexaminer.com/subscribe"
+                            class="pulldown-size font-roboto">Magazine</a>
+                    </h4>
+                    <a class="my-4 d-block" href="https://www.washingtonexaminer.com/issue/february-13-2024/">
+                        <img src="assets/images/magazine-cover-Feb-13.png" alt="magazine-cover-Feb-13"
+                            class="w-100 object-fit-cover">
+                    </a>
+                    <div class="text-center">
+                        <a href="https://ssl.drgnetwork.com/ecom/MDC/app/live/subscriptions?org=MDC&amp;publ=WS&amp;key_code=IC9BTN3&amp;type=S"
+                            title="Subscribe" class="subscribe-signup-btn font-roboto">
+                            Subscribe
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-6 border-start my-2" style="border-color: #888888!important;">
+                    <h4 class="block-title">
+                        <a href="https://www.washingtonexaminer.com/newsletter"
+                            class="pulldown-size font-roboto">Newsletter</a>
+                    </h4>
+                    <a class="my-4 d-block" href="https://www.washingtonexaminer.com/newsletter">
+                        <img src="assets/images/newsletter-1.webp" alt="newsletter-1" class="w-100 object-fit-cover">
+                    </a>
+                    <div class="text-center">
+                        <a href="https://ssl.drgnetwork.com/ecom/MDC/app/live/subscriptions?org=MDC&amp;publ=WS&amp;key_code=IC9BTN3&amp;type=S"
+                            title="Subscribe" class="subscribe-signup-btn font-roboto">
+                            Sign Up
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- election-2024 -->
+            <div class="elections-2024 border-top py-4" style="border-color: #888888!important;">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h4 class="block-title"><a href="/election-2024/">Election 2024</a></h4>
+
+                    <a href="/election-2024/" class="pulldown-category">Continue to the category
+                        <span class="fw-bold" style="font-size: 18px;">&rarr;</span></a>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <div class="illusion-2024">
+                            <a href="https://www.washingtonexaminer.com/news/campaigns/2884897/newsom-says-biden-should-100-debate-trump-ahead-of-election/"
+                                rel="bookmark" class="td-image-wrap "
+                                title="Newsom says Biden should ‘100%’ debate Trump ahead of election">
+                                <img src="assets/images/newsom-and-biden-chatup.jpg" alt="newsom-and-biden-chatup"
+                                    class="w-100 object-fit-contain">
+                            </a>
+
+                            <h3 class="entry-title mt-3">
+                                <a href="https://www.washingtonexaminer.com/news/campaigns/2884897/newsom-says-biden-should-100-debate-trump-ahead-of-election/"
+                                    rel="bookmark"
+                                    title="Newsom says Biden should ‘100%’ debate Trump ahead of election">
+                                    Newsom
+                                    says Biden should ‘100%’ debate Trump ahead of election
+                                </a>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="col-8 ps-5">
+                        <div class="d-grid align-items-start my-3 gap-5" style="grid-template-columns: 1fr 1fr;">
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/news/campaigns/2884892/nikki-haley-40-percent-case-trump-michigan-primary/"
+                                    rel="bookmark"
+                                    title="Nikki Haley makes ‘40%’ case against Trump in Michigan days before primary">Nikki
+                                    Haley makes ‘40%’ case against Trump in Michigan days before primary
+                                </a>
+                            </h3>
+
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/news/campaigns/2884854/rival-strategist-admits-to-being-behind-fake-biden-robocall-discouraging-citizens-from-voting/"
+                                    rel="bookmark"
+                                    title="Rival strategist admits to being behind fake Biden robocall discouraging citizens from voting">Rival
+                                    strategist admits to being behind fake Biden robocall discouraging citizens from
+                                    voting</a>
+                            </h3>
+                        </div>
+
+                        <div class="d-grid align-items-start my-4 gap-5" style="grid-template-columns: 1fr 1fr;">
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/news/campaigns/2884858/koch-backed-americans-for-prosperity-cuts-off-money-to-haley-after-south-carolina-defeat/"
+                                    rel="bookmark"
+                                    title="Koch-backed Americans for Prosperity cuts off money to Haley after South Carolina defeat">Koch-backed
+                                    Americans for Prosperity cuts off money to Haley after South Carolina defeat</a>
+                            </h3>
+
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/news/2884415/whitmer-says-republicans-supporting-ivf-does-not-undercut-democratic-messaging/"
+                                    rel="bookmark"
+                                    title="Whitmer says Republicans supporting IVF ‘does not’ undercut Democratic messaging">'Hell
+                                    no': Whitmer shares how Republicans supporting IVF affects Democrats heading
+                                    into November</a>
+                            </h3>
+                        </div>
+
+                        <div class="d-grid align-items-start my-4 gap-5" style="grid-template-columns: 1fr 1fr;">
+
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/news/campaigns/2884725/rfk-jr-campaign-offers-afternoon-of-sailing-contest-for-supporter/"
+                                    rel="bookmark"
+                                    title="RFK Jr. campaign offers ‘afternoon of sailing’ contest for supporter">RFK
+                                    Jr.
+                                    campaign offers ‘afternoon of sailing’ contest for supporter</a>
+                            </h3>
+
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/news/senate/2884691/john-thune-highest-ranking-senate-republican-endorse-trump/"
+                                    rel="bookmark"
+                                    title="Trump receives endorsement from No. 2 Senate Republican John Thune">John
+                                    Thune becomes highest ranking Senate Republican to endorse Trump</a>
+                            </h3>
+                        </div>
+
+                        <div class="d-grid align-items-start mt-4 gap-5" style="grid-template-columns: 1fr 1fr;">
+
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/opinion/2884576/dont-listen-to-mike-lindell-about-early-voting-hes-pushing-an-archaic-and-failed-strategy/"
+                                    rel="bookmark"
+                                    title="Don’t listen to Mike Lindell about early voting. He’s pushing an archaic and failed strategy">Don’t
+                                    listen to Mike Lindell about early voting. He’s pushing an archaic and failed
+                                    strategy</a>
+                            </h3>
+
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/news/campaigns/2884443/rnc-resolutions-proposed-limit-trump-committee-report/"
+                                    rel="bookmark"
+                                    title="RNC resolutions proposed to keep committee neutral and limit Trump’s access to funds: Report">RNC
+                                    resolutions proposed to keep committee neutral and limit Trump’s access to
+                                    funds: Report</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- googleads -->
+            <div class="text-center my-4 border-top pt-4 my-3" style="border-color: #888888!important;">
+                <a id="aw0" target="_blank"
+                    href="https://googleads.g.doubleclick.net/pcs/click?xai=AKAOjstNBFbfO0M8HNq9qg84r5yYMl9xK2NTkRgsfVzH7ym1R4UI6N7JREvb-qbcIVUaGjr6KB13LSDq3mx9mtzSIw9dP7HETflyocuV5ZG3GCiWem3tK_VBJ_l3LmiKpfgMjCsfs5jpwoBFhIoWUijDtPUDCnq2cAcbD-5OkYdACyWKuph_xeh-kYeMfEXKODHp92ou44yfB58NVqi857-C1WFtjiUK5k7qOTH86A3S1ElZDLue_LoYoYnDQvHHGlYogmvXzF0bqGOW4a9iUifHFKzLVTsCT5EDO0ldwzs6_dqi60mGOrcnXuT0bZmq1Dg9oxCZmA1tOsXxVhOT3ZWefuyt5oC6YbeLVzQBqvAwO2FZjmgYEK9dIqhaX8afwtMD7YirRY95-UhlsNnWH46KFqWjtA&amp;sai=AMfl-YTnFDRovC8PGl-JMgiqAcZs2ZlR06wfv_V4pVgw0quVNNB8zGazyysnsHv4eFl4tu7useNlFyMtLqQDfkqxv0NCmWdRLL8f-1r1PpPWwxshy5J_eZzRsyXC9sDsb9PfD6agkdlDLaoWkXXSycaK8iYasZTZrQ&amp;sig=Cg0ArKJSzPhOGlnOdCuQ&amp;fbs_aeid=%5Bgw_fbsaeid%5D&amp;adurl=https://www.washingtonexaminer.com/section/restoring-america/patriotism-unity/%3Futm_source%3Dhomepage%26utm_medium%3Dbanner%26utm_campaign%3Drestoringamerica%26utm_id%3Drestoringamerica&amp;nm=3"
+                    onfocus="ss('aw0')" onmousedown="st('aw0')" onmouseover="ss('aw0')" onclick="ha('aw0')"><img
+                        src="https://tpc.googlesyndication.com/simgad/3124953469843279746" width="728" height="90"
+                        alt="" class="w-75 object-fit-contain"></a>
+
+            </div>
+            <!--  -->
+
+            <!-- Restoring America -->
+            <div class="elections-2024 border-top py-4" style="border-color: #888888!important;">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h4 class="block-title"><a href="/restoring-america">Restoring America</a></h4>
+
+                    <a href="/restoring-america/" class="pulldown-category">Continue to the category
+                        <span class="fw-bold" style="font-size: 18px;">&rarr;</span></a>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <div class="illusion-2024">
+                            <a href="https://www.washingtonexaminer.com/news/campaigns/2884897/newsom-says-biden-should-100-debate-trump-ahead-of-election/"
+                                rel="bookmark" class="td-image-wrap "
+                                title="Newsom says Biden should ‘100%’ debate Trump ahead of election">
+                                <img src="assets/images/trump-baby.jpg" alt="newsom-and-biden-chatup"
+                                    class="w-100 object-fit-contain">
+                            </a>
+
+                            <h3 class="entry-title mt-3">
+                                <a href="https://www.washingtonexaminer.com/restoring-america/2870509/deja-vu-russia-collusion-is-back/"
+                                    rel="bookmark" title="Deja vu: Russia collusion is back">Will voters fall for
+                                    Democrats disinformation campaigns again?</a>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="col-8 ps-5">
+                        <div class="d-grid align-items-start my-3 gap-5" style="grid-template-columns: 1fr 1fr;">
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/restoring-america/2868323/us-steel-stronger-more-agile-if-nippon-deal-goes-through/"
+                                    rel="bookmark"
+                                    title="US Steel will be stronger, more agile if Nippon Steel deal goes through">US
+                                    Steel will be stronger, more agile if Nippon Steel deal goes through</a>
+                            </h3>
+
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/restoring-america/faith-freedom-self-reliance/2868343/economy-still-weakening/"
+                                    rel="bookmark" title="America’s economy is still weakening">America’s economy is
+                                    still weakening</a>
+                            </h3>
+                        </div>
+
+                        <div class="d-grid align-items-start my-4 gap-5" style="grid-template-columns: 1fr 1fr;">
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/restoring-america/2868354/the-political-lesson-in-yales-return-to-standardized-tests/"
+                                    rel="bookmark"
+                                    title="The political lesson in Yale’s return to standardized tests">The
+                                    political lesson in Yale’s return to standardized tests</a>
+                            </h3>
+
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/restoring-america/2868365/anatomy-of-a-manufactured-progressive-controversy/"
+                                    rel="bookmark" title="Anatomy of a manufactured progressive ‘controversy’">Anatomy
+                                    of a
+                                    manufactured progressive ‘controversy’</a>
+                            </h3>
+                        </div>
+
+                        <div class="d-grid align-items-start my-4 gap-5" style="grid-template-columns: 1fr 1fr;">
+
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/restoring-america/2868398/biden-administrations-latest-woke-rule-undermines-native-american-culture-and-history/"
+                                    rel="bookmark"
+                                    title="Biden administration’s latest woke rule undermines Native American culture and history">Biden
+                                    administration’s latest woke rule undermines Native American culture and
+                                    history</a>
+                            </h3>
+
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/opinion/2868501/merit-makes-comeback/"
+                                    rel="bookmark" title="Merit makes a comeback">Merit makes a comeback</a>
+                            </h3>
+                        </div>
+
+                        <div class="d-grid align-items-start mt-4 gap-5" style="grid-template-columns: 1fr 1fr;">
+
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/restoring-america/fairness-justice/2864657/starbucks-proxy-war-shows-big-labors-new-tactic/"
+                                    rel="bookmark"
+                                    title="Starbucks proxy war shows Big Labor’s new tactic&nbsp;">Starbucks proxy
+                                    war shows Big Labor’s new tactic&nbsp;</a>
+                            </h3>
+
+                            <h3 class="entry-title module-title mb-0">
+                                <a href="https://www.washingtonexaminer.com/restoring-america/2866445/senate-republicans-have-path-tax-deal-win/"
+                                    rel="bookmark" title="Senate Republicans have a path to a tax deal win">Senate
+                                    Republicans have a path to a tax deal win</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- opinions -->
+            <div class="border-top py-4 Opinion-b" style="border-color: #888888!important;">
+                <h4 class="block-title"><a href="/Opinion">Opinion</a></h4>
+                <div class="d-grid mt-4 gap-4" style="grid-template-columns: 1fr 1fr;">
+                    <div class="mini-category-posts d-flex align-items-start gap-2">
+                        <a href="https://www.washingtonexaminer.com/news/campaigns/2884892/nikki-haley-40-percent-case-trump-michigan-primary/"
+                            rel="bookmark"
+                            title="Nikki Haley makes ‘40%’ case against Trump in Michigan days before primary">
+                            <img src="assets/images/mini-nikki-haley.png" alt="mini-nikki-haley"
+                                class="object-fit-cover"></a>
+
+                        <div class="text-start">
+                            <h3 class="entry-title font-roboto">
+                                <a href="https://www.washingtonexaminer.com/news/campaigns/2884892/nikki-haley-40-percent-case-trump-michigan-primary/"
+                                    rel="bookmark"
+                                    title="Nikki Haley makes ‘40%’ case against Trump in Michigan days before primary">Nikki
+                                    Haley makes ‘40%’ case against Trump in Michigan days before primary</a>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="mini-category-posts d-flex align-items-start gap-2">
+                        <a href="https://www.washingtonexaminer.com/news/2884657/progress-gaza-ceasefire-depends-hamas-demands-netanyahu/"
+                            rel="bookmark"
+                            title="Progress on Gaza ceasefire depends on Hamas’s ‘crazy demands’: Netanyahu">
+                            <img src="assets/images/netanyahu.jpg" alt="netanyahu.jpg" class="object-fit-cover"></a>
+
+                        <div class="text-start">
+                            <h3 class="entry-title font-roboto">
+                                <a href="https://www.washingtonexaminer.com/news/2884657/progress-gaza-ceasefire-depends-hamas-demands-netanyahu/"
+                                    rel="bookmark"
+                                    title="Progress on Gaza ceasefire depends on Hamas’s ‘crazy demands’: Netanyahu">Progress
+                                    on Gaza ceasefire depends on Hamas’s ‘crazy demands’: Netanyahu</a>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="mini-category-posts d-flex align-items-start gap-2">
+                        <a href="https://www.washingtonexaminer.com/news/2884837/kemp-blames-bidens-inaction-on-border-security-for-death-of-georgia-college-student/"
+                            rel="bookmark"
+                            title="Kemp blames Biden’s inaction on border security for death of Georgia college student">
+                            <img src="assets/images/kemp-blasts.jpg" alt="kemp-blasts.jpg" class="object-fit-cover">
+                        </a>
+
+                        <div class="text-start">
+                            <h3 class="entry-title font-roboto">
+                                <a href="https://www.washingtonexaminer.com/news/2884837/kemp-blames-bidens-inaction-on-border-security-for-death-of-georgia-college-student/"
+                                    rel="bookmark"
+                                    title="Kemp blames Biden’s inaction on border security for death of Georgia college student">'Your
+                                    failures': Kemp blasts Biden's border policies for death of Georgia college
+                                    student</a>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="mini-category-posts d-flex align-items-start gap-2">
+                        <a href="https://www.washingtonexaminer.com/news/2884655/man-sets-himself-on-fire-outside-dcs-israeli-embassy/"
+                            rel="bookmark" title="Active-duty airman sets himself on fire outside DC’s Israeli Embassy">
+                            <img src="assets/images/israeli-embassay.jpg" alt="israeli-embassay"
+                                class="object-fit-cover">
+                        </a>
+
+                        <div class="text-start">
+                            <h3 class="entry-title font-roboto">
+                                <a href="https://www.washingtonexaminer.com/news/2884655/man-sets-himself-on-fire-outside-dcs-israeli-embassy/"
+                                    rel="bookmark"
+                                    title="Active-duty airman sets himself on fire outside DC’s Israeli Embassy">Active-duty
+                                    airman sets himself on fire outside DC’s Israeli Embassy</a>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="mini-category-posts d-flex align-items-start gap-2">
+                        <a href="https://www.washingtonexaminer.com/news/2884518/nancy-mace-contends-gop-is-pro-america-not-pro-russia-amid-criticism-on-stalled-ukraine-aid/"
+                            rel="bookmark"
+                            title="Nancy Mace contends GOP is ‘pro-America,’ not ‘pro-Russia’ amid criticism on stalled Ukraine aid">
+                            <img src="assets/images/nancy-mac.jpg" alt="nancy-mac.jpg" class="object-fit-cover"></a>
+
+                        <div class="text-start">
+                            <h3 class="entry-title font-roboto">
+                                <a href="https://www.washingtonexaminer.com/news/2884518/nancy-mace-contends-gop-is-pro-america-not-pro-russia-amid-criticism-on-stalled-ukraine-aid/"
+                                    rel="bookmark"
+                                    title="Nancy Mace contends GOP is ‘pro-America,’ not ‘pro-Russia’ amid criticism on stalled Ukraine aid">'This
+                                    is what the Left does': Nancy Mace rips Democrats in debate over foreign aid</a>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="mini-category-posts d-flex align-items-start gap-2">
+                        <a href="https://www.washingtonexaminer.com/news/2884815/italian-snl-begins-new-season-with-parody-of-joe-biden/"
+                            rel="bookmark" title="Italian ‘SNL’ begins new season with parody of Joe Biden">
+                            <img src="assets/images/old-biden.jpg" alt="old-biden.jpg" class="object-fit-cover">
+                        </a>
+
+                        <div class="text-start">
+                            <h3 class="entry-title font-roboto">
+                                <a href="https://www.washingtonexaminer.com/news/2884815/italian-snl-begins-new-season-with-parody-of-joe-biden/"
+                                    rel="bookmark"
+                                    title="Italian ‘SNL’ begins new season with parody of Joe Biden">Italian ‘SNL’
+                                    begins new season with parody of Joe Biden</a>
+                            </h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
